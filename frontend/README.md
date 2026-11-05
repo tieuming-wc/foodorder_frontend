@@ -91,3 +91,10 @@ Lưu ý khi tạo trang:
 | Console (F12) báo `blocked by CORS policy` | Kiểm tra `CORS_ORIGINS` trong `backend/.env`, sửa xong nhớ chạy lại backend |
 | Menu/header không hiện | Sai `data-root` ở thẻ `<body>`, hoặc sai đường dẫn file JS. Mở F12 → Console để xem lỗi |
 | Sửa code mà trang không đổi | Tải lại cứng: `Ctrl + F5` |
+
+## 6. Môi trường đã chạy thử (T3C4593)
+
+- Backend FastAPI chạy local tại `http://127.0.0.1:8000` (MySQL 8.0.46, database `app_db`) — backend nằm ở repo riêng, không đưa vào repo frontend này.
+- Frontend chạy tại `http://127.0.0.1:5500`, trang chủ hiện **✅ Backend OK · MySQL: connected**.
+- Ảnh minh chứng: [`docs/screenshots/fe-home-ok.png`](docs/screenshots/fe-home-ok.png) · [`docs/screenshots/fe-items-crud.png`](docs/screenshots/fe-items-crud.png).
+- Quy ước đặt tên branch/commit/PR của nhóm: [`docs/CONVENTIONS.md`](docs/CONVENTIONS.md).
