@@ -13,6 +13,7 @@ const submitButton = document.getElementById("btn-submit");
 const cancelButton = document.getElementById("btn-cancel");
 
 let editingId = null; // null = đang thêm mới; có số = đang sửa item đó
+let currentItems = []; // danh sách đang hiện, dùng cho nút "+ Giỏ"
 
 // ---------- Đọc dữ liệu ----------
 async function loadItems() {
@@ -28,6 +29,7 @@ async function loadItems() {
 }
 
 function renderItems(items) {
+  currentItems = items;
   if (items.length === 0) {
     tableBody.innerHTML = `<tr><td colspan="5" class="muted">Chưa có dữ liệu</td></tr>`;
     return;
@@ -42,6 +44,7 @@ function renderItems(items) {
       <td class="text-right">${formatMoney(item.price)}</td>
       <td>${formatDateTime(item.created_at)}</td>
       <td class="actions">
+        <button class="btn btn-small" data-action="add-to-cart" data-id="${item.id}">+ Giỏ</button>
         <button class="btn btn-small" data-action="edit" data-id="${item.id}">Sửa</button>
         <button class="btn btn-small btn-danger" data-action="delete" data-id="${item.id}">Xoá</button>
       </td>
@@ -120,7 +123,16 @@ tableBody.addEventListener("click", (event) => {
   const id = Number(button.dataset.id);
   if (button.dataset.action === "edit") startEdit(id);
   if (button.dataset.action === "delete") deleteItem(id);
+  if (button.dataset.action === "add-to-cart") addToCart(id);
 });
+
+// ---------- Thêm vào giỏ ----------
+function addToCart(id) {
+  const item = currentItems.find((row) => row.id === id);
+  if (!item) return;
+  cartStore.add({ id: item.id, name: item.name, price: item.price });
+  showToast(`Đã thêm "${item.name}" vào giỏ`);
+}
 
 cancelButton.addEventListener("click", resetForm);
 
