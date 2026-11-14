@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng nhập | KS25 Base</title>
+  <link rel="icon" href="../assets/images/logo.svg">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-root="../">
+  <header id="app-header"></header>
+
+  <main class="container auth-page">
+    <section class="card auth-card">
+      <h1>Đăng nhập</h1>
+      <p class="muted">Cần đăng nhập để thêm món vào giỏ hàng.</p>
+
+      <form id="login-form">
+        <label for="username">Tên đăng nhập *</label>
+        <input id="username" name="username" type="text" required autocomplete="username"
+          placeholder="VD: sinhvien01">
+
+        <label for="password">Mật khẩu *</label>
+        <input id="password" name="password" type="password" required autocomplete="current-password"
+          placeholder="••••••">
+
+        <p id="login-error" class="text-error auth-error" hidden></p>
+
+        <div class="form-actions">
+          <button id="btn-login" type="submit" class="btn btn-primary">Đăng nhập</button>
+        </div>
+      </form>
+
+      <p class="muted auth-note">
+        Tài khoản lấy từ DB (bảng <code>users</code>) qua API <code>POST /api/auth/login</code>.
+        Dữ liệu mẫu: <code>admin</code> / <code>123456</code>.
+      </p>
+    </section>
+  </main>
+
+  <footer id="app-footer"></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.7.9/dist/axios.min.js"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/cart.js"></script>
+  <script src="../js/layout.js"></script>
+  <script src="../js/pages/login.js"></script>
+</body>
+</html>

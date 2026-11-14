@@ -4,9 +4,14 @@
 // Mỗi dòng trong giỏ có dạng:
 //   { id: 1, name: "Cơm rang", image: "https://...", price: 45000, quantity: 2 }
 //
-// Trang món muốn thêm vào giỏ:  cartStore.add({ id, name, image, price });
+// Trang nào muốn thêm món vào giỏ thì gọi hàm addToCart(...) ở cuối file này,
+// không tự viết lại, để mọi trang cùng một cách xử lý (kiểm tra đăng nhập, toast).
+//
+// Số món trên header tự cập nhật: mỗi lần giỏ thay đổi, cartStore.save() phát
+// sự kiện "cart:changed" và js/layout.js nghe để vẽ lại số trên menu.
 
 const CART_STORAGE_KEY = "ks25_cart";
+const CART_CHANGED_EVENT = "cart:changed";
 
 const cartStore = {
   // Đọc giỏ từ localStorage. Dữ liệu hỏng hoặc sai định dạng -> coi như giỏ trống.
@@ -30,13 +35,15 @@ const cartStore = {
 
   save(lines) {
     localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(lines));
+    // Báo cho header (và bất kỳ chỗ nào đang nghe) biết giỏ vừa thay đổi
+    window.dispatchEvent(new CustomEvent(CART_CHANGED_EVENT, { detail: lines }));
   },
 
   find(lines, id) {
     return lines.find((line) => String(line.id) === String(id));
   },
 
-  // Tổng số món trong giỏ (cộng cả số lượng) - dùng để hiện số trên menu nếu cần
+  // Tổng số món trong giỏ (cộng cả số lượng) - hiện trên menu header
   count() {
     return this.all().reduce((sum, line) => sum + line.quantity, 0);
   },
@@ -81,3 +88,19 @@ const cartStore = {
     return lines;
   },
 };
+
+// ---------- Hàm thêm vào giỏ dùng chung cho mọi trang ----------
+// addToCart({ id, name, price, image })  ->  true nếu đã thêm được.
+// Chưa đăng nhập: chuyển sang trang đăng nhập và không thêm gì (trả về false).
+function addToCart(product, quantity = 1) {
+  if (typeof authStore !== "undefined" && !authStore.requireLogin()) {
+    return false; // requireLogin() đã tự chuyển trang
+  }
+  if (!product || product.id === undefined || product.id === null) {
+    showToast("Không tìm thấy món để thêm vào giỏ", "error");
+    return false;
+  }
+  cartStore.add(product, quantity);
+  showToast(`Đã thêm "${product.name}" vào giỏ`);
+  return true;
+}
