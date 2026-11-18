@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Món ăn">
+  <rect width="400" height="300" fill="#1b1e19"/>
+  <g fill="none" stroke="#e2c896" stroke-width="3" stroke-linecap="round" opacity="0.55">
+    <circle cx="200" cy="150" r="62"/>
+    <circle cx="200" cy="150" r="40"/>
+    <path d="M200 88v-18M200 230v-18M138 150h-18M280 150h-18"/>
+  </g>
+</svg>

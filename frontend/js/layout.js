@@ -8,7 +8,12 @@
 // Thêm trang mới vào menu: thêm 1 dòng vào mảng này (đường dẫn tính từ thư mục frontend/)
 const MENU = [
   { href: "index.html", label: "Trang chủ" },
+  { href: "pages/menu.html", label: "Thực đơn" },
   { href: "pages/items.html", label: "Items (CRUD mẫu)" },
+  { href: "pages/cart.html", label: "Giỏ hàng" },
+  { href: "pages/checkout.html", label: "Thanh toán" },
+  { href: "pages/login.html", label: "Đăng nhập" },
+  { href: "admin/index.html", label: "Admin" },
 ];
 
 function renderLayout() {

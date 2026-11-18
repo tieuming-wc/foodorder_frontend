@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0c0a">
+  <title>Thanh toán | Savoris</title>
+  <link rel="icon" href="../assets/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/savoris.css">
+</head>
+<body data-root="../">
+  <header id="sv-header"></header>
+
+  <main class="sv-page">
+    <div class="sv-container">
+      <div class="sv-page-head">
+        <nav class="sv-breadcrumb" aria-label="Bạn đang ở">
+          <a href="cart.html">Giỏ hàng</a>
+          <span aria-hidden="true">/</span>
+          <span>Thanh toán</span>
+        </nav>
+        <h1 class="sv-display">Thông tin thanh toán</h1>
+        <p class="sv-page-head__meta">Vui lòng kiểm tra lại món ăn và điền đầy đủ thông tin giao hàng.</p>
+      </div>
+
+      <div class="sv-checkout-grid" id="checkout-grid">
+        <form id="checkout-form" novalidate>
+          <!-- 1. Người nhận -->
+          <section class="sv-card" aria-labelledby="step-recipient">
+            <div class="sv-card__head">
+              <span class="sv-card__step" aria-hidden="true">1</span>
+              <h2 class="sv-card__title" id="step-recipient">Thông tin người nhận</h2>
+            </div>
+
+            <div class="sv-form-grid">
+              <div class="sv-field">
+                <label for="full-name">Họ và tên <span class="sv-req" aria-hidden="true">*</span></label>
+                <input class="sv-input" id="full-name" name="full_name" type="text" autocomplete="name"
+                  placeholder="VD: Nguyễn Minh Anh" required aria-describedby="err-full-name">
+                <p class="sv-error" id="err-full-name"></p>
+              </div>
+
+              <div class="sv-field">
+                <label for="phone">Số điện thoại <span class="sv-req" aria-hidden="true">*</span></label>
+                <input class="sv-input" id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel"
+                  placeholder="VD: 0912345678" required aria-describedby="err-phone">
+                <p class="sv-error" id="err-phone"></p>
+              </div>
+
+              <div class="sv-field sv-field--wide">
+                <label for="email">Email <span class="sv-page-head__meta" style="font-size:12px">(không bắt buộc)</span></label>
+                <input class="sv-input" id="email" name="email" type="email" autocomplete="email"
+                  placeholder="VD: minhanh@email.com" aria-describedby="err-email">
+                <p class="sv-error" id="err-email"></p>
+              </div>
+            </div>
+          </section>
+
+          <!-- 2. Địa chỉ giao hàng -->
+          <section class="sv-card" aria-labelledby="step-address">
+            <div class="sv-card__head">
+              <span class="sv-card__step" aria-hidden="true">2</span>
+              <h2 class="sv-card__title" id="step-address">Địa chỉ giao hàng</h2>
+            </div>
+
+            <div class="sv-form-grid">
+              <div class="sv-field">
+                <label for="province">Tỉnh / Thành phố <span class="sv-req" aria-hidden="true">*</span></label>
+                <select class="sv-input" id="province" name="province" required aria-describedby="err-province">
+                  <option value="">Chọn tỉnh / thành phố</option>
+                  <option>TP. Hồ Chí Minh</option>
+                  <option>Hà Nội</option>
+                  <option>Đà Nẵng</option>
+                  <option>Hải Phòng</option>
+                  <option>Cần Thơ</option>
+                  <option>Bình Dương</option>
+                  <option>Đồng Nai</option>
+                  <option>Khánh Hòa</option>
+                  <option>Thừa Thiên Huế</option>
+                </select>
+                <p class="sv-error" id="err-province"></p>
+              </div>
+
+              <div class="sv-field">
+                <label for="district">Quận / Huyện <span class="sv-req" aria-hidden="true">*</span></label>
+                <input class="sv-input" id="district" name="district" type="text" autocomplete="address-level2"
+                  placeholder="VD: Quận 1" required aria-describedby="err-district">
+                <p class="sv-error" id="err-district"></p>
+              </div>
+
+              <div class="sv-field sv-field--wide">
+                <label for="address">Địa chỉ chi tiết <span class="sv-req" aria-hidden="true">*</span></label>
+                <input class="sv-input" id="address" name="address" type="text" autocomplete="street-address"
+                  placeholder="Số nhà, tên đường, phường / xã" required aria-describedby="err-address">
+                <p class="sv-error" id="err-address"></p>
+              </div>
+
+              <div class="sv-field sv-field--wide">
+                <label for="note">Ghi chú cho tài xế <span class="sv-page-head__meta" style="font-size:12px">(không bắt buộc)</span></label>
+                <textarea class="sv-input" id="note" name="note" rows="3"
+                  placeholder="VD: Giao sau 18h, gọi trước khi tới…"></textarea>
+              </div>
+            </div>
+          </section>
+
+          <!-- 3. Phương thức thanh toán -->
+          <section class="sv-card" aria-labelledby="step-payment">
+            <div class="sv-card__head">
+              <span class="sv-card__step" aria-hidden="true">3</span>
+              <h2 class="sv-card__title" id="step-payment">Phương thức thanh toán</h2>
+            </div>
+
+            <div class="sv-pay-list" role="radiogroup" aria-labelledby="step-payment">
+              <label class="sv-pay is-selected">
+                <input type="radio" name="payment" value="cod" checked>
+                <span class="sv-pay__dot" aria-hidden="true"></span>
+                <span class="sv-pay__body">
+                  <span class="sv-pay__name">
+                    <svg width="17" height="17" viewBox="0 0 20 20" fill="none" stroke="currentColor"
+                      stroke-width="1.3" stroke-linecap="round" aria-hidden="true">
+                      <rect x="1.5" y="4.5" width="17" height="11" rx="2"/><circle cx="10" cy="10" r="2.4"/>
+                    </svg>
+                    Tiền mặt khi nhận hàng
+                  </span>
+                  <span class="sv-pay__desc">Thanh toán trực tiếp cho nhân viên giao hàng khi nhận món.</span>
+                </span>
+              </label>
+
+              <label class="sv-pay">
+                <input type="radio" name="payment" value="bank">
+                <span class="sv-pay__dot" aria-hidden="true"></span>
+                <span class="sv-pay__body">
+                  <span class="sv-pay__name">
+                    <svg width="17" height="17" viewBox="0 0 20 20" fill="none" stroke="currentColor"
+                      stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M2.5 7.5 10 3l7.5 4.5M4 8.5v6M8 8.5v6M12 8.5v6M16 8.5v6M2.5 17h15"/>
+                    </svg>
+                    Chuyển khoản ngân hàng
+                  </span>
+                  <span class="sv-pay__desc">Vietcombank · 0123 456 789 · SAVORIS KITCHEN. Đơn xác nhận sau khi nhận tiền.</span>
+                </span>
+              </label>
+
+              <label class="sv-pay">
+                <input type="radio" name="payment" value="momo">
+                <span class="sv-pay__dot" aria-hidden="true"></span>
+                <span class="sv-pay__body">
+                  <span class="sv-pay__name">
+                    <svg width="17" height="17" viewBox="0 0 20 20" fill="none" stroke="currentColor"
+                      stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <rect x="2" y="5" width="16" height="11" rx="2.5"/><path d="M2 9h16M14.5 12.5h1.5"/>
+                    </svg>
+                    Ví điện tử MoMo
+                  </span>
+                  <span class="sv-pay__desc">Thanh toán nhanh bằng ví MoMo, an toàn và không mất phí.</span>
+                </span>
+              </label>
+            </div>
+          </section>
+        </form>
+
+        <aside class="sv-sticky">
+          <section class="sv-summary" aria-label="Đơn hàng của bạn">
+            <h2 class="sv-summary__title">Đơn hàng của bạn</h2>
+            <div class="sv-mini-list" id="mini-list"></div>
+            <div class="sv-summary__divider"></div>
+
+            <div class="sv-summary__row">
+              <span>Tạm tính</span>
+              <span id="sum-subtotal">0đ</span>
+            </div>
+            <div class="sv-summary__row">
+              <span>Phí giao hàng</span>
+              <span id="sum-shipping">0đ</span>
+            </div>
+            <div class="sv-summary__row sv-summary__row--discount" id="sum-discount-row" hidden>
+              <span id="sum-discount-label">Ưu đãi</span>
+              <span id="sum-discount">0đ</span>
+            </div>
+
+            <dl class="sv-summary__total">
+              <dt>Tổng thanh toán</dt>
+              <dd id="sum-total" aria-live="polite">0đ</dd>
+            </dl>
+
+            <div class="sv-summary__cta">
+              <button class="sv-btn sv-btn--gold" id="btn-order" type="submit" form="checkout-form" disabled>
+                Chốt đơn
+              </button>
+              <p class="sv-summary__note" id="order-hint">Nhập đủ Họ tên, Số điện thoại và Địa chỉ để chốt đơn.</p>
+            </div>
+
+            <p class="sv-summary__note">
+              Bằng việc chốt đơn, bạn đồng ý với
+              <a href="#" style="text-decoration:none">điều khoản dịch vụ</a> của Savoris.
+            </p>
+          </section>
+
+          <p class="sv-summary__note" style="margin-top:16px">
+            <a href="cart.html" style="color:var(--sv-muted);text-decoration:none">← Quay lại giỏ hàng</a>
+          </p>
+        </aside>
+      </div>
+
+      <!-- Đặt hàng thành công -->
+      <section class="sv-success" id="order-success" hidden aria-live="polite">
+        <div class="sv-success__icon">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg>
+        </div>
+        <h2>Đặt hàng thành công</h2>
+        <p>Cảm ơn bạn đã chọn Savoris Kitchen. Đơn hàng đang được nhà bếp chuẩn bị và sẽ sớm giao tới bạn.</p>
+
+        <div class="sv-success__box" id="success-detail"></div>
+
+        <div class="sv-success__actions">
+          <a class="sv-btn sv-btn--gold" href="../index.html" style="color:var(--sv-gold-ink)">Về trang chủ</a>
+          <a class="sv-btn sv-btn--ghost" href="menu.html">Tiếp tục chọn món</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer id="sv-footer" class="sv-footer"></footer>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/cart-store.js"></script>
+  <script src="../js/savoris-layout.js"></script>
+  <script src="../js/pages/checkout.js"></script>
+</body>
+</html>

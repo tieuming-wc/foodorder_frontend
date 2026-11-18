@@ -3,41 +3,74 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trang chủ | KS25 Base</title>
+  <meta name="theme-color" content="#0b0c0a">
+  <meta name="description" content="Savoris Kitchen — ẩm thực tinh tế, nguyên liệu tuyển chọn và trải nghiệm đáng nhớ.">
+  <title>Khám phá | Savoris</title>
   <link rel="icon" href="assets/images/logo.svg">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/savoris.css">
+  <link rel="stylesheet" href="css/savoris-home.css">
 </head>
-<body data-root="./">
-  <header id="app-header"></header>
+<body class="sv-home-body" data-root="./">
+  <header id="sv-header"></header>
 
-  <main class="container">
-    <section class="card">
-      <h1>Base code Frontend (HTML · CSS · JS)</h1>
-      <p>Khung dự án cho các nhóm thực tập. Trang này kiểm tra kết nối <strong>Frontend → Backend → MySQL</strong>.</p>
-
-      <p>API đang dùng: <code id="api-url"></code> <span class="muted">(sửa trong <code>js/config.js</code>)</span></p>
-      <div id="health-status" class="status"></div>
-      <button id="btn-recheck" class="btn">Kiểm tra lại</button>
+  <main>
+    <section class="sv-home-hero">
+      <div class="sv-container sv-home-hero__inner">
+        <p class="sv-home-eyebrow"><span></span> Savoris Kitchen · Contemporary dining</p>
+        <h1 class="sv-home-title">Ẩm thực tinh tế,<br><em>khoảnh khắc đáng nhớ.</em></h1>
+        <p class="sv-home-lead">Từ nguyên liệu được tuyển chọn đến từng chi tiết trên bàn ăn — mỗi trải nghiệm tại Savoris đều được chăm chút bằng sự trân trọng.</p>
+        <div class="sv-home-actions">
+          <a class="sv-btn sv-btn--gold sv-home-cta" href="pages/menu.html">Khám phá thực đơn <span aria-hidden="true">↗</span></a>
+          <a class="sv-home-text-link" href="#story">Câu chuyện Savoris <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="sv-home-signature"><span class="sv-home-line"></span><span>Fine dining · Contemporary cuisine</span></div>
+      </div>
+      <div class="sv-home-hero__caption"><span>Savoris</span><span>Kitchen &amp; Dining</span></div>
     </section>
 
-    <section class="card">
-      <h2>Bắt đầu từ đâu?</h2>
-      <ol>
-        <li>Xem trang <a href="pages/items.html">Items</a>: ví dụ thêm / sửa / xoá / tìm kiếm gọi API thật.</li>
-        <li>Đọc <code>js/api.js</code> để biết cách gọi API bằng axios.</li>
-        <li>Tạo trang mới: copy <code>pages/items.html</code> + <code>js/pages/items.js</code>, thêm link vào <code>js/layout.js</code>.</li>
-      </ol>
+    <section class="sv-container sv-home-featured">
+      <div class="sv-home-section-head">
+        <div>
+          <p class="sv-home-eyebrow">Từ căn bếp Savoris</p>
+          <h2 class="sv-display">Món ăn đặc trưng</h2>
+        </div>
+        <a class="sv-home-text-link" href="pages/menu.html">Xem toàn bộ thực đơn <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="sv-menu-grid" id="home-featured" aria-live="polite"></div>
+    </section>
+
+    <section class="sv-home-story" id="story">
+      <div class="sv-container sv-home-story__inner">
+        <div class="sv-home-story__image">
+          <img src="assets/images/dishes/ca-hoi-ap-chao.jpg" alt="Cá hồi áp chảo cùng rau củ tươi" loading="lazy">
+          <span>Fresh ingredients, honest cooking</span>
+        </div>
+        <div class="sv-home-story__copy">
+          <p class="sv-home-eyebrow">Triết lý của chúng tôi</p>
+          <h2 class="sv-display">Tinh tế trong<br>từng điều giản dị.</h2>
+          <p>Chúng tôi tin rằng một bữa ăn đáng nhớ bắt đầu từ nguyên liệu tốt, được chế biến đúng cách và trao đi trong một không gian ấm áp.</p>
+          <p>Mỗi món ăn tại Savoris là sự kết hợp giữa cảm hứng đương đại và sự trân trọng dành cho hương vị nguyên bản.</p>
+          <a class="sv-home-text-link" href="pages/menu.html">Đến với Savoris <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="sv-container sv-home-reservation">
+      <p class="sv-home-eyebrow">Một buổi tối dành riêng cho bạn</p>
+      <h2 class="sv-display">Hẹn gặp bạn tại Savoris.</h2>
+      <p>Thực đơn được chuẩn bị theo yêu cầu. Bếp mở cửa mỗi ngày từ 10:00 đến 22:00.</p>
+      <a class="sv-btn sv-btn--gold sv-home-cta" href="pages/menu.html">Chọn món ngay <span aria-hidden="true">↗</span></a>
     </section>
   </main>
 
-  <footer id="app-footer"></footer>
-
-  <!-- Thứ tự quan trọng: axios -> config -> api -> utils -> layout -> script riêng của trang -->
-  <script src="https://cdn.jsdelivr.net/npm/axios@1.7.9/dist/axios.min.js"></script>
-  <script src="js/config.js"></script>
-  <script src="js/api.js"></script>
+  <footer id="sv-footer" class="sv-footer"></footer>
   <script src="js/utils.js"></script>
-  <script src="js/layout.js"></script>
+  <script src="js/dishes-store.js"></script>
+  <script src="js/cart-store.js"></script>
+  <script src="js/savoris-layout.js"></script>
   <script src="js/pages/home.js"></script>
 </body>
 </html>

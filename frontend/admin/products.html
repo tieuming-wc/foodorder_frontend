@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0c0a">
+  <title>Danh mục &amp; món · Admin Savoris</title>
+  <link rel="icon" href="../assets/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/admin.css">
+  <script src="../js/config.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/admin/guard.js"></script>
+</head>
+<body class="ad-body" data-admin-page="products">
+  <div class="ad-app" id="ad-app">
+    <aside id="ad-sidebar"></aside>
+
+    <div class="ad-main">
+      <header id="ad-topbar"></header>
+
+      <main class="ad-content">
+        <div class="ad-page-head">
+          <h1 class="ad-title">Danh mục &amp; món</h1>
+          <p class="ad-sub">Tổ chức món ăn và cập nhật thực đơn của nhà hàng.</p>
+        </div>
+
+        <div class="ad-split">
+          <section class="ad-card" aria-label="Danh sách món">
+            <div class="ad-chips" id="ad-dish-chips" style="margin-bottom:14px"></div>
+
+            <div class="ad-table-wrap">
+              <table class="ad-table">
+                <thead>
+                  <tr>
+                    <th>Món ăn</th>
+                    <th>Danh mục</th>
+                    <th>Giá</th>
+                    <th>Trạng thái</th>
+                    <th class="ad-t-right">Thao tác</th>
+                  </tr>
+                </thead>
+                <tbody id="ad-dish-rows"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <aside class="ad-panel">
+            <section class="ad-card" aria-labelledby="ad-dish-form-title">
+              <div class="ad-card__head">
+                <h2 class="ad-card__title" id="ad-dish-form-title">Thêm món mới</h2>
+              </div>
+
+              <form class="ad-form" id="ad-dish-form" novalidate>
+                <div class="ad-field">
+                  <label class="ad-label" for="ad-dish-name">Tên món</label>
+                  <input class="ad-input" id="ad-dish-name" name="dishName" type="text"
+                    placeholder="VD: Súp bí đỏ truffle" required maxlength="120">
+                </div>
+
+                <div class="ad-field">
+                  <label class="ad-label" for="ad-dish-category">Danh mục</label>
+                  <select class="ad-select" id="ad-dish-category" name="dishCategory"></select>
+                </div>
+
+                <div class="ad-field">
+                  <label class="ad-label" for="ad-dish-price">Giá (VNĐ)</label>
+                  <input class="ad-input" id="ad-dish-price" name="dishPrice" type="number" min="0" step="1000"
+                    placeholder="0" required>
+                </div>
+
+                <div class="ad-field">
+                  <label class="ad-label" for="ad-dish-note">Mô tả ngắn</label>
+                  <input class="ad-input" id="ad-dish-note" name="dishNote" type="text"
+                    placeholder="VD: Sốt kem truffle" maxlength="120">
+                </div>
+
+                <div class="ad-field">
+                  <label class="ad-label" for="ad-dish-image">Ảnh (đường dẫn)</label>
+                  <input class="ad-input" id="ad-dish-image" name="dishImage" type="text"
+                    placeholder="assets/images/dishes/ten-mon.jpg">
+                  <p class="ad-hint">Để trống sẽ dùng ảnh mặc định của nhà hàng.</p>
+                </div>
+
+                <label class="ad-switch">
+                  <input type="checkbox" name="dishVisible" checked>
+                  <span class="ad-switch__track" aria-hidden="true"></span>
+                  Hiển thị trên thực đơn
+                </label>
+
+                <div class="ad-form__actions">
+                  <button class="ad-btn ad-btn--gold" type="submit">Lưu món</button>
+                </div>
+              </form>
+            </section>
+          </aside>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/dishes-store.js"></script>
+  <script src="../js/admin/layout.js"></script>
+  <script src="../js/admin/pages.js"></script>
+</body>
+</html>

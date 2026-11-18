@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0c0a">
+  <title>Giỏ hàng | Savoris</title>
+  <link rel="icon" href="../assets/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/savoris.css">
+</head>
+<body data-root="../">
+  <header id="sv-header"></header>
+
+  <main class="sv-page">
+    <div class="sv-container">
+      <div class="sv-page-head">
+        <h1 class="sv-display">Giỏ hàng của bạn</h1>
+        <p class="sv-page-head__meta" id="cart-meta">Đang tải…</p>
+      </div>
+
+      <div class="sv-split" id="cart-content">
+        <div>
+          <div class="sv-cart-list" id="cart-list"></div>
+
+          <section class="sv-voucher" id="voucher-box" aria-labelledby="voucher-label">
+            <label class="sv-label" id="voucher-label" for="voucher-input">Mã ưu đãi</label>
+            <div class="sv-voucher__row">
+              <input class="sv-input" id="voucher-input" type="text" placeholder="Nhập mã ưu đãi"
+                autocomplete="off" spellcheck="false" aria-describedby="voucher-msg voucher-hint">
+              <button class="sv-btn sv-btn--ghost" id="voucher-apply" type="button">Áp dụng</button>
+            </div>
+            <p class="sv-voucher__msg" id="voucher-msg" role="status" hidden></p>
+            <p class="sv-voucher__hint" id="voucher-hint">
+              Thử mã <strong>SAVORIS10</strong> để được giảm 10% (tối đa 200.000đ).
+            </p>
+          </section>
+
+          <a class="sv-back" href="menu.html">
+            <svg width="14" height="12" viewBox="0 0 14 12" fill="none" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6.5 1 1.5 6l5 5M1.5 6H13"/>
+            </svg>
+            Tiếp tục chọn món
+          </a>
+        </div>
+
+        <aside class="sv-sticky">
+          <section class="sv-summary" id="cart-summary" aria-label="Tóm tắt đơn hàng">
+            <h2 class="sv-summary__title">Tóm tắt đơn hàng</h2>
+            <div class="sv-summary__row">
+              <span>Tạm tính</span>
+              <span id="sum-subtotal">0đ</span>
+            </div>
+            <div class="sv-summary__row">
+              <span>Phí giao hàng</span>
+              <span id="sum-shipping">0đ</span>
+            </div>
+            <div class="sv-summary__row sv-summary__row--discount" id="sum-discount-row" hidden>
+              <span id="sum-discount-label">Ưu đãi</span>
+              <span id="sum-discount">0đ</span>
+            </div>
+            <dl class="sv-summary__total">
+              <dt>Tổng thanh toán</dt>
+              <dd id="sum-total" aria-live="polite">0đ</dd>
+            </dl>
+            <div class="sv-summary__cta">
+              <a class="sv-btn sv-btn--gold" id="btn-checkout" href="checkout.html">Tiến hành thanh toán</a>
+            </div>
+            <p class="sv-summary__note">Đã bao gồm thuế và phí phục vụ</p>
+          </section>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer id="sv-footer" class="sv-footer"></footer>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/cart-store.js"></script>
+  <script src="../js/savoris-layout.js"></script>
+  <script src="../js/pages/cart.js"></script>
+</body>
+</html>

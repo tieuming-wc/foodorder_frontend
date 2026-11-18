@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0c0a">
+  <title>Thực đơn | Savoris</title>
+  <link rel="icon" href="../assets/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/savoris.css">
+</head>
+<body data-root="../">
+  <header id="sv-header"></header>
+
+  <main class="sv-page">
+    <div class="sv-container">
+      <div class="sv-page-head">
+        <h1 class="sv-display">Thực đơn của Savoris</h1>
+        <p class="sv-page-head__meta" id="menu-count">Bếp mở 10:00 – 22:00 mỗi ngày</p>
+      </div>
+
+      <div class="sv-menu-grid" id="menu-grid" aria-live="polite"></div>
+
+      <p class="sv-page-head__meta" style="margin-top:26px">
+        Món ăn được làm theo yêu cầu, thời gian chuẩn bị 25–35 phút.
+      </p>
+    </div>
+  </main>
+
+  <footer id="sv-footer" class="sv-footer"></footer>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/dishes-store.js"></script>
+  <script src="../js/cart-store.js"></script>
+  <script src="../js/savoris-layout.js"></script>
+  <script src="../js/pages/menu.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0c0a">
+  <title>403 · Không có quyền truy cập | Savoris</title>
+  <link rel="icon" href="../assets/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/savoris.css">
+</head>
+<body data-root="../">
+  <main class="sv-page sv-auth">
+    <div class="sv-auth__card sv-error-page">
+      <a class="sv-brand" href="../index.html" aria-label="Savoris — về trang chủ">
+        <svg class="sv-brand__mark" width="15" height="9" viewBox="0 0 15 9" fill="none" stroke="currentColor"
+          stroke-width="1.2" stroke-linecap="round" aria-hidden="true"><path d="M1 8 7.5 1 14 8"/></svg>
+        <span class="sv-brand__name">Savoris</span>
+      </a>
+
+      <p class="sv-error-page__code">403</p>
+      <h1 class="sv-display" id="error-title">Bạn không có quyền truy cập</h1>
+      <p class="sv-page-head__meta" id="error-desc">
+        Khu vực quản trị chỉ dành cho tài khoản ADMIN.
+      </p>
+      <p class="sv-error-page__path" id="error-path"></p>
+
+      <div class="sv-success__actions">
+        <a class="sv-btn sv-btn--gold" id="error-login" href="login.html">Đăng nhập tài khoản khác</a>
+        <a class="sv-btn sv-btn--ghost" href="../index.html">Về trang chủ</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Hiển thị lý do bị chặn do Admin Guard gửi sang
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const reason = params.get("reason") || "forbidden";
+      const next = params.get("next") || "";
+
+      const REASONS = {
+        unauthenticated: "Bạn chưa đăng nhập. Hãy đăng nhập bằng tài khoản quản trị để tiếp tục.",
+        forbidden: "Tài khoản đang đăng nhập không có vai trò ADMIN nên không thể vào khu vực quản trị.",
+        expired: "Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.",
+        error: "Không kiểm tra được phiên đăng nhập. Vui lòng đăng nhập lại.",
+      };
+
+      document.getElementById("error-desc").textContent = REASONS[reason] || REASONS.forbidden;
+      if (next) document.getElementById("error-path").textContent = "Đường dẫn bị chặn: " + next;
+    })();
+  </script>
+</body>
+</html>
