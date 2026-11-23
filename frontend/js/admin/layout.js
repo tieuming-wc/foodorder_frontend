@@ -35,6 +35,34 @@
       en: "Orders",
       icon: '<path d="M5 3h10v14.5l-2.5-1.6L10 17.5l-2.5-1.6L5 17.5V3Z"/><path d="M7.5 7.5h5M7.5 11h5"/>',
     },
+    {
+      page: "promotions",
+      href: "promotions.html",
+      label: "Khuyến mãi",
+      en: "Promotions",
+      icon: '<path d="M3 5.5h14v5l-7 7-7-7v-5Z"/><circle cx="7" cy="9" r="1.2"/><path d="m8.5 13.5 5-5"/>',
+    },
+    {
+      page: "feedback",
+      href: "feedback.html",
+      label: "Phản hồi",
+      en: "Feedback",
+      icon: '<path d="M3 4h14v10H8l-4 3v-3H3V4Z"/><path d="M6.5 8h7M6.5 11h4"/>',
+    },
+    {
+      page: "partners",
+      href: "partners.html",
+      label: "Đối tác",
+      en: "Partners",
+      icon: '<rect x="3" y="5" width="14" height="11" rx="2"/><path d="M7 5V3h6v2M3 10h14M8 10v2h4v-2"/>',
+    },
+    {
+      page: "shippers",
+      href: "shippers.html",
+      label: "Shipper",
+      en: "Shippers",
+      icon: '<path d="M3 6h10v8H3V6Z"/><path d="M13 9h3l2 3v2h-5V9ZM6 16a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM15 16a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/>',
+    },
   ];
 
   const current = document.body.dataset.adminPage || "dashboard";
@@ -50,7 +78,9 @@
   const currentTab = TABS.find((tab) => tab.page === current) || TABS[0];
 
   function initials(name) {
-    const parts = String(name || "Admin").trim().split(/\s+/);
+    const parts = String(name || "Admin")
+      .trim()
+      .split(/\s+/);
     return (parts[0][0] + (parts[parts.length - 1][0] || "")).toUpperCase();
   }
 
@@ -76,13 +106,15 @@
       <p class="ad-sidebar__label">Quản trị nhà hàng</p>
 
       <nav class="ad-nav" aria-label="Chức năng quản trị">
-        ${TABS.map((tab) => `
+        ${TABS.map(
+          (tab) => `
           <a href="${tab.href}" class="${tab.page === current ? "is-active" : ""}"
             data-tab="${tab.page}" title="${tab.label} · ${tab.en}"
             ${tab.page === current ? 'aria-current="page"' : ""}>
             ${icon(tab.icon)}
             <span class="ad-nav__text">${tab.label}</span>
-          </a>`).join("")}
+          </a>`,
+        ).join("")}
       </nav>
 
       <div class="ad-sidebar__foot">
@@ -102,7 +134,8 @@
 
     const user = store ? store.user() || {} : {};
     const name = user.full_name || user.name || user.email || "Quản trị viên";
-    const roleLabel = store && store.isAdmin() ? "Quản trị viên" : String(user.role || "Admin");
+    const roleLabel =
+      store && store.isAdmin() ? "Quản trị viên" : String(user.role || "Admin");
 
     mount.className = "ad-topbar";
     mount.innerHTML = `
@@ -139,11 +172,13 @@
     const nav = document.createElement("nav");
     nav.className = "ad-bottom-nav";
     nav.setAttribute("aria-label", "Điều hướng quản trị");
-    nav.innerHTML = TABS.map((tab) => `
+    nav.innerHTML = TABS.map(
+      (tab) => `
       <a href="${tab.href}" class="${tab.page === current ? "is-active" : ""}">
         ${icon(tab.icon, 19)}
         <span>${tab.label}</span>
-      </a>`).join("");
+      </a>`,
+    ).join("");
     document.body.appendChild(nav);
 
     const overlay = document.createElement("div");
@@ -168,7 +203,10 @@
     collapseBtn.addEventListener("click", () => {
       const collapsed = app.classList.toggle("is-collapsed");
       collapseBtn.setAttribute("aria-expanded", String(!collapsed));
-      collapseBtn.setAttribute("aria-label", collapsed ? "Mở rộng thanh điều hướng" : "Thu gọn thanh điều hướng");
+      collapseBtn.setAttribute(
+        "aria-label",
+        collapsed ? "Mở rộng thanh điều hướng" : "Thu gọn thanh điều hướng",
+      );
       localStorage.setItem(COLLAPSE_KEY, collapsed ? "collapsed" : "expanded");
     });
 
@@ -177,11 +215,14 @@
       burger.setAttribute("aria-expanded", String(open));
     }
 
-    burger.addEventListener("click", () => setDrawer(!app.classList.contains("is-open")));
+    burger.addEventListener("click", () =>
+      setDrawer(!app.classList.contains("is-open")),
+    );
     overlay.addEventListener("click", () => setDrawer(false));
 
     document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && app.classList.contains("is-open")) setDrawer(false);
+      if (event.key === "Escape" && app.classList.contains("is-open"))
+        setDrawer(false);
     });
 
     // Bấm menu trên mobile thì đóng drawer

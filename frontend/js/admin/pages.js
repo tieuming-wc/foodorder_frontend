@@ -18,22 +18,125 @@
   // Dữ liệu mẫu
   // ============================================================
   const USERS = [
-    { id: 1, name: "Nguyễn Minh Anh", email: "minhanh@email.com", role: "Khách hàng", status: "active", phone: "0912 345 678", joined: "12/03/2025", extra: "Đã xác minh email" },
-    { id: 2, name: "Trần Hoàng Nam", email: "namtran@email.com", role: "Shipper", status: "pending", phone: "0938 112 477", joined: "05/11/2026", extra: "CCCD: 079201012345 · Bằng lái: Hợp lệ" },
-    { id: 3, name: "Lê Thu Hà", email: "thuha@email.com", role: "Khách hàng", status: "locked", phone: "0907 663 210", joined: "21/08/2025", extra: "Khóa do hủy đơn 3 lần" },
-    { id: 4, name: "Phạm Gia Bảo", email: "giabao@email.com", role: "Khách hàng", status: "active", phone: "0901 224 889", joined: "02/09/2025", extra: "Đã xác minh SĐT" },
-    { id: 5, name: "Vũ Hải Đăng", email: "haidang@email.com", role: "Quản trị viên", status: "active", phone: "0988 445 120", joined: "10/01/2025", extra: "Toàn quyền hệ thống" },
-    { id: 6, name: "Savoris Kitchen", email: "kitchen@savoris.vn", role: "Đối tác", status: "pending", phone: "028 3822 1199", joined: "16/11/2026", extra: "GPKD: 0312 889 441" },
+    {
+      id: 1,
+      name: "Nguyễn Minh Anh",
+      email: "minhanh@email.com",
+      role: "Khách hàng",
+      status: "active",
+      phone: "0912 345 678",
+      joined: "12/03/2025",
+      extra: "Đã xác minh email",
+    },
+    {
+      id: 2,
+      name: "Trần Hoàng Nam",
+      email: "namtran@email.com",
+      role: "Shipper",
+      status: "pending",
+      phone: "0938 112 477",
+      joined: "05/11/2026",
+      extra: "CCCD: 079201012345 · Bằng lái: Hợp lệ",
+    },
+    {
+      id: 3,
+      name: "Lê Thu Hà",
+      email: "thuha@email.com",
+      role: "Khách hàng",
+      status: "locked",
+      phone: "0907 663 210",
+      joined: "21/08/2025",
+      extra: "Khóa do hủy đơn 3 lần",
+    },
+    {
+      id: 4,
+      name: "Phạm Gia Bảo",
+      email: "giabao@email.com",
+      role: "Khách hàng",
+      status: "active",
+      phone: "0901 224 889",
+      joined: "02/09/2025",
+      extra: "Đã xác minh SĐT",
+    },
+    {
+      id: 5,
+      name: "Vũ Hải Đăng",
+      email: "haidang@email.com",
+      role: "Quản trị viên",
+      status: "active",
+      phone: "0988 445 120",
+      joined: "10/01/2025",
+      extra: "Toàn quyền hệ thống",
+    },
+    {
+      id: 6,
+      name: "Savoris Kitchen",
+      email: "kitchen@savoris.vn",
+      role: "Đối tác",
+      status: "pending",
+      phone: "028 3822 1199",
+      joined: "16/11/2026",
+      extra: "GPKD: 0312 889 441",
+    },
   ];
 
   const ORDERS = [
-    { code: "SV-2411-018", customer: "Nguyễn Minh Anh", items: 2, total: 2815000, status: "pending", time: "10:42" },
-    { code: "SV-2411-017", customer: "Lê Thu Hà", items: 1, total: 425000, status: "shipping", time: "10:15" },
-    { code: "SV-2411-016", customer: "Phạm Gia Bảo", items: 3, total: 1960000, status: "done", time: "09:58" },
-    { code: "SV-2411-015", customer: "Trần Hoàng Nam", items: 2, total: 710000, status: "done", time: "09:31" },
-    { code: "SV-2411-014", customer: "Nguyễn Minh Anh", items: 1, total: 285000, status: "done", time: "09:12" },
-    { code: "SV-2411-013", customer: "Savoris Kitchen", items: 4, total: 3120000, status: "cancelled", time: "08:47" },
-    { code: "SV-2411-012", customer: "Vũ Hải Đăng", items: 2, total: 640000, status: "done", time: "08:20" },
+    {
+      code: "SV-2411-018",
+      customer: "Nguyễn Minh Anh",
+      items: 2,
+      total: 2815000,
+      status: "pending",
+      time: "10:42",
+    },
+    {
+      code: "SV-2411-017",
+      customer: "Lê Thu Hà",
+      items: 1,
+      total: 425000,
+      status: "shipping",
+      time: "10:15",
+    },
+    {
+      code: "SV-2411-016",
+      customer: "Phạm Gia Bảo",
+      items: 3,
+      total: 1960000,
+      status: "done",
+      time: "09:58",
+    },
+    {
+      code: "SV-2411-015",
+      customer: "Trần Hoàng Nam",
+      items: 2,
+      total: 710000,
+      status: "done",
+      time: "09:31",
+    },
+    {
+      code: "SV-2411-014",
+      customer: "Nguyễn Minh Anh",
+      items: 1,
+      total: 285000,
+      status: "done",
+      time: "09:12",
+    },
+    {
+      code: "SV-2411-013",
+      customer: "Savoris Kitchen",
+      items: 4,
+      total: 3120000,
+      status: "cancelled",
+      time: "08:47",
+    },
+    {
+      code: "SV-2411-012",
+      customer: "Vũ Hải Đăng",
+      items: 2,
+      total: 640000,
+      status: "done",
+      time: "08:20",
+    },
   ];
 
   // Danh sách món dùng CHUNG với trang Thực đơn của khách (js/dishes-store.js).
@@ -71,8 +174,13 @@
   // ============================================================
   function renderDashboard() {
     const dishes = dishStore.all();
-    const revenue = ORDERS.filter((order) => order.status === "done").reduce((sum, order) => sum + order.total, 0);
-    const pendingUsers = USERS.filter((user) => user.status === "pending").length;
+    const revenue = ORDERS.filter((order) => order.status === "done").reduce(
+      (sum, order) => sum + order.total,
+      0,
+    );
+    const pendingUsers = USERS.filter(
+      (user) => user.status === "pending",
+    ).length;
     const selling = dishes.filter((dish) => dish.status === "selling").length;
 
     document.getElementById("ad-stats").innerHTML = `
@@ -97,18 +205,24 @@
         <p class="ad-stat__meta">${dishes.length} món trong thực đơn</p>
       </article>`;
 
-    document.getElementById("ad-recent-orders").innerHTML = ORDERS.slice(0, 5).map((order) => `
+    document.getElementById("ad-recent-orders").innerHTML = ORDERS.slice(0, 5)
+      .map(
+        (order) => `
       <tr>
         <td class="ad-td-main"><div class="ad-cell-main"><strong>${esc(order.code)}</strong><span>${esc(order.time)}</span></div></td>
         <td data-label="Khách hàng">${esc(order.customer)}</td>
         <td data-label="Tổng tiền" class="ad-t-right ad-t-nowrap">${money(order.total)}</td>
         <td data-label="Trạng thái">${badge(ORDER_STATUS, order.status)}</td>
-      </tr>`).join("");
+      </tr>`,
+      )
+      .join("");
 
     const top = [...dishes].sort((a, b) => b.sales - a.sales).slice(0, 4);
     const maxSales = top[0] ? top[0].sales : 1;
 
-    document.getElementById("ad-top-dishes").innerHTML = top.map((dish, index) => `
+    document.getElementById("ad-top-dishes").innerHTML = top
+      .map(
+        (dish, index) => `
       <div class="ad-rank__row">
         <span class="ad-rank__no">${index + 1}</span>
         <div>
@@ -116,7 +230,9 @@
           <div class="ad-rank__bar"><i style="width:${Math.round((dish.sales / maxSales) * 100)}%"></i></div>
         </div>
         <span class="ad-rank__value">${dish.sales} phần</span>
-      </div>`).join("");
+      </div>`,
+      )
+      .join("");
   }
 
   // ============================================================
@@ -124,13 +240,16 @@
   // ============================================================
   let userFilter = "all";
   let userQuery = "";
-  let selectedUserId = (USERS.find((user) => user.status === "pending") || USERS[0]).id;
+  let selectedUserId = (
+    USERS.find((user) => user.status === "pending") || USERS[0]
+  ).id;
 
   function filteredUsers() {
     return USERS.filter((user) => {
       const matchStatus = userFilter === "all" || user.status === userFilter;
       const keyword = userQuery.toLowerCase();
-      const matchQuery = !keyword ||
+      const matchQuery =
+        !keyword ||
         user.name.toLowerCase().includes(keyword) ||
         user.email.toLowerCase().includes(keyword) ||
         user.phone.replace(/\s/g, "").includes(keyword.replace(/\s/g, ""));
@@ -146,12 +265,13 @@
       return;
     }
 
-    const actions = user.status === "pending"
-      ? `<button class="ad-btn ad-btn--gold" type="button" data-user-action="approve" data-id="${user.id}">Duyệt tài khoản</button>
+    const actions =
+      user.status === "pending"
+        ? `<button class="ad-btn ad-btn--gold" type="button" data-user-action="approve" data-id="${user.id}">Duyệt tài khoản</button>
          <button class="ad-btn ad-btn--danger" type="button" data-user-action="lock" data-id="${user.id}">Từ chối / Khóa</button>`
-      : user.status === "locked"
-        ? `<button class="ad-btn ad-btn--gold" type="button" data-user-action="unlock" data-id="${user.id}">Mở khóa tài khoản</button>`
-        : `<button class="ad-btn ad-btn--danger" type="button" data-user-action="lock" data-id="${user.id}">Khóa tài khoản</button>`;
+        : user.status === "locked"
+          ? `<button class="ad-btn ad-btn--gold" type="button" data-user-action="unlock" data-id="${user.id}">Mở khóa tài khoản</button>`
+          : `<button class="ad-btn ad-btn--danger" type="button" data-user-action="lock" data-id="${user.id}">Khóa tài khoản</button>`;
 
     panel.innerHTML = `
       <p class="ad-detail__name">${esc(user.name)}</p>
@@ -186,18 +306,19 @@
       return;
     }
 
-    body.innerHTML = list.map((user) => {
-      let action = "";
-      if (user.status === "pending") {
-        action = `<button class="ad-btn ad-btn--sm ad-btn--gold" type="button" data-user-action="approve" data-id="${user.id}">Duyệt</button>
+    body.innerHTML = list
+      .map((user) => {
+        let action = "";
+        if (user.status === "pending") {
+          action = `<button class="ad-btn ad-btn--sm ad-btn--gold" type="button" data-user-action="approve" data-id="${user.id}">Duyệt</button>
           <button class="ad-btn ad-btn--sm" type="button" data-user-action="lock" data-id="${user.id}">Khóa</button>`;
-      } else if (user.status === "locked") {
-        action = `<button class="ad-btn ad-btn--sm" type="button" data-user-action="unlock" data-id="${user.id}">Mở khóa</button>`;
-      } else {
-        action = `<button class="ad-btn ad-btn--sm ad-btn--danger" type="button" data-user-action="lock" data-id="${user.id}">Khóa</button>`;
-      }
+        } else if (user.status === "locked") {
+          action = `<button class="ad-btn ad-btn--sm" type="button" data-user-action="unlock" data-id="${user.id}">Mở khóa</button>`;
+        } else {
+          action = `<button class="ad-btn ad-btn--sm ad-btn--danger" type="button" data-user-action="lock" data-id="${user.id}">Khóa</button>`;
+        }
 
-      return `
+        return `
         <tr data-id="${user.id}" class="${user.id === selectedUserId ? "is-selected" : ""}">
           <td class="ad-td-main">
             <div class="ad-cell-main"><strong>${esc(user.name)}</strong><span>${esc(user.email)}</span></div>
@@ -206,7 +327,8 @@
           <td data-label="Trạng thái">${badge(USER_STATUS, user.status)}</td>
           <td class="ad-td-actions">${action}</td>
         </tr>`;
-    }).join("");
+      })
+      .join("");
 
     renderUserDetail();
   }
@@ -286,15 +408,21 @@
 
   function renderDishes() {
     const dishes = dishStore.all();
-    const list = dishes.filter((dish) => dishCategory === "all" || dish.category === dishCategory);
+    const list = dishes.filter(
+      (dish) => dishCategory === "all" || dish.category === dishCategory,
+    );
 
     document.getElementById("ad-dish-chips").innerHTML = `
       <button class="ad-chip ${dishCategory === "all" ? "is-active" : ""}" type="button" data-dish-filter="all">Tất cả <b>${dishes.length}</b></button>
-      ${categories().map((category) => {
-        const count = dishes.filter((dish) => dish.category === category).length;
-        return `<button class="ad-chip ${dishCategory === category ? "is-active" : ""}" type="button"
+      ${categories()
+        .map((category) => {
+          const count = dishes.filter(
+            (dish) => dish.category === category,
+          ).length;
+          return `<button class="ad-chip ${dishCategory === category ? "is-active" : ""}" type="button"
           data-dish-filter="${esc(category)}">${esc(category)} <b>${count}</b></button>`;
-      }).join("")}`;
+        })
+        .join("")}`;
 
     const body = document.getElementById("ad-dish-rows");
     if (list.length === 0) {
@@ -302,7 +430,9 @@
       return;
     }
 
-    body.innerHTML = list.map((dish) => `
+    body.innerHTML = list
+      .map(
+        (dish) => `
       <tr data-id="${esc(dish.id)}">
         <td class="ad-td-main"><div class="ad-cell-main"><strong>${esc(dish.name)}</strong><span>${dish.sales} phần đã bán</span></div></td>
         <td data-label="Danh mục">${esc(dish.category)}</td>
@@ -314,13 +444,17 @@
           </button>
           <button class="ad-btn ad-btn--sm ad-btn--danger" type="button" data-dish-action="remove" data-id="${esc(dish.id)}">Xóa</button>
         </td>
-      </tr>`).join("");
+      </tr>`,
+      )
+      .join("");
 
     const select = document.getElementById("ad-dish-category");
     const categoryList = categories();
     if (select && select.options.length !== categoryList.length) {
       const current = select.value;
-      select.innerHTML = categoryList.map((category) => `<option>${esc(category)}</option>`).join("");
+      select.innerHTML = categoryList
+        .map((category) => `<option>${esc(category)}</option>`)
+        .join("");
       if (current) select.value = current;
     }
   }
@@ -346,7 +480,11 @@
 
       if (button.dataset.dishAction === "toggle") {
         const updated = dishStore.toggle(dish.id);
-        adToast(updated.status === "selling" ? `Đã mở bán "${dish.name}"` : `Đã tạm ngưng "${dish.name}"`);
+        adToast(
+          updated.status === "selling"
+            ? `Đã mở bán "${dish.name}"`
+            : `Đã tạm ngưng "${dish.name}"`,
+        );
       }
 
       if (button.dataset.dishAction === "remove") {
@@ -398,21 +536,298 @@
   let orderFilter = "all";
 
   const ORDER_ACTIONS = {
-    pending: [{ action: "ship", label: "Xác nhận & giao" }, { action: "cancel", label: "Hủy", danger: true }],
-    shipping: [{ action: "done", label: "Hoàn tất" }, { action: "cancel", label: "Hủy", danger: true }],
+    pending: [
+      { action: "ship", label: "Xác nhận & giao" },
+      { action: "cancel", label: "Hủy", danger: true },
+    ],
+    shipping: [
+      { action: "done", label: "Hoàn tất" },
+      { action: "cancel", label: "Hủy", danger: true },
+    ],
     done: [],
     cancelled: [],
   };
 
+  // ============================================================
+  // Khuyến mãi
+  // ============================================================
+  const PROMOTIONS = [
+    {
+      id: 1,
+      name: "Bữa trưa đầy cảm hứng",
+      description: "Giảm 15% món chính 11:00–14:00",
+      discount: 15,
+      days: "Thứ hai đến thứ sáu",
+      start: "10/11/2026",
+      end: "23/11/2026",
+      status: "active",
+    },
+    {
+      id: 2,
+      name: "Khuyến mãi mới",
+      description: "Ưu đãi cuối tuần",
+      discount: 10,
+      days: "Cuối tuần",
+      start: "20/11/2026",
+      end: "20/12/2026",
+      status: "active",
+    },
+  ];
+
+  function renderPromotions() {
+    const body = document.getElementById("ad-promotion-rows");
+    if (!body) return;
+    body.innerHTML = PROMOTIONS.map(
+      (item) => `
+      <tr>
+        <td class="ad-td-main"><div class="ad-cell-main"><strong>${esc(item.name)}</strong><span>${esc(item.description)}</span></div></td>
+        <td data-label="Giảm">${item.discount}%</td>
+        <td data-label="Thời gian">${esc(item.start)} – ${esc(item.end)}</td>
+        <td data-label="Trạng thái">${badge({ active: { label: "Đang chạy", cls: "ok" }, paused: { label: "Tạm dừng", cls: "muted" } }, item.status)}</td>
+        <td class="ad-td-actions">
+          <button class="ad-btn ad-btn--sm" type="button" data-promotion-action="${item.status === "active" ? "pause" : "resume"}" data-id="${item.id}">
+            ${item.status === "active" ? "Tạm dừng" : "Kích hoạt"}
+          </button>
+        </td>
+      </tr>`,
+    ).join("");
+  }
+
+  function setupPromotions() {
+    renderPromotions();
+    const form = document.getElementById("ad-promotion-form");
+    const body = document.getElementById("ad-promotion-rows");
+
+    body.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-promotion-action]");
+      if (!button) return;
+      const item = PROMOTIONS.find(
+        (entry) => entry.id === Number(button.dataset.id),
+      );
+      if (!item) return;
+      item.status =
+        button.dataset.promotionAction === "pause" ? "paused" : "active";
+      adToast(
+        item.status === "active"
+          ? `Đã kích hoạt "${item.name}"`
+          : `Đã tạm dừng "${item.name}"`,
+      );
+      renderPromotions();
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const name = form.promotionName.value.trim();
+      const discount = Number(form.promotionDiscount.value || 0);
+      if (!name || discount <= 0) {
+        adToast("Vui lòng nhập tên và mức giảm hợp lệ.", "error");
+        return;
+      }
+      PROMOTIONS.push({
+        id: Date.now(),
+        name,
+        description:
+          form.promotionDescription.value.trim() ||
+          "Ưu đãi dành cho khách hàng",
+        discount,
+        days: form.promotionDays.value.trim() || "Tất cả các ngày",
+        start: form.promotionStart.value,
+        end: form.promotionEnd.value,
+        status: "active",
+      });
+      form.reset();
+      renderPromotions();
+      adToast(`Đã tạo khuyến mãi "${name}"`);
+    });
+  }
+
+  // ============================================================
+  // Phản hồi
+  // ============================================================
+  const FEEDBACKS = [
+    {
+      id: 1,
+      name: "Nguyễn Minh Anh",
+      email: "minhanh@email.com",
+      rating: 5,
+      content: "Món ăn ngon, giao hàng nhanh.",
+      status: "new",
+    },
+    {
+      id: 2,
+      name: "Lê Thu Hà",
+      email: "thuha@email.com",
+      rating: 4,
+      content: "Đóng gói đẹp, sẽ đặt lại.",
+      status: "new",
+    },
+    {
+      id: 3,
+      name: "Phạm Gia Bảo",
+      email: "giabao@email.com",
+      rating: 5,
+      content: "Bít tết Wagyu rất ngon.",
+      status: "replied",
+    },
+  ];
+
+  function renderFeedback() {
+    const body = document.getElementById("ad-feedback-rows");
+    if (!body) return;
+    body.innerHTML = FEEDBACKS.map(
+      (item) => `
+      <tr>
+        <td class="ad-td-main"><div class="ad-cell-main"><strong>${esc(item.name)}</strong><span>${esc(item.email)}</span></div></td>
+        <td data-label="Đánh giá">${"★".repeat(item.rating)}${"☆".repeat(5 - item.rating)}</td>
+        <td data-label="Nội dung">${esc(item.content)}</td>
+        <td data-label="Trạng thái">${badge({ new: { label: "Chờ phản hồi", cls: "warn" }, replied: { label: "Đã phản hồi", cls: "ok" } }, item.status)}</td>
+        <td class="ad-td-actions">
+          ${item.status === "new" ? `<button class="ad-btn ad-btn--sm ad-btn--gold" type="button" data-feedback-action="reply" data-id="${item.id}">Phản hồi</button>` : '<span class="ad-panel__empty">—</span>'}
+        </td>
+      </tr>`,
+    ).join("");
+  }
+
+  function setupFeedback() {
+    renderFeedback();
+    document
+      .getElementById("ad-feedback-rows")
+      .addEventListener("click", (event) => {
+        const button = event.target.closest("[data-feedback-action]");
+        if (!button) return;
+        const item = FEEDBACKS.find(
+          (entry) => entry.id === Number(button.dataset.id),
+        );
+        if (!item) return;
+        item.status = "replied";
+        adToast(`Đã đánh dấu phản hồi cho ${item.name}`);
+        renderFeedback();
+      });
+  }
+
+  // ============================================================
+  // Đối tác
+  // ============================================================
+  const PARTNERS = [
+    {
+      id: 1,
+      name: "Savoris Kitchen",
+      email: "kitchen@savoris.vn",
+      phone: "028 3822 1199",
+      license: "GPKD: 0312 889 441",
+      status: "pending",
+    },
+  ];
+
+  function renderPartners() {
+    const body = document.getElementById("ad-partner-rows");
+    if (!body) return;
+    body.innerHTML = PARTNERS.map(
+      (item) => `
+      <tr>
+        <td class="ad-td-main"><div class="ad-cell-main"><strong>${esc(item.name)}</strong><span>${esc(item.email)}</span></div></td>
+        <td data-label="Liên hệ">${esc(item.phone)}</td>
+        <td data-label="Giấy phép">${esc(item.license)}</td>
+        <td data-label="Trạng thái">${badge({ pending: { label: "Chờ duyệt", cls: "warn" }, active: { label: "Đang hợp tác", cls: "ok" }, locked: { label: "Ngừng hợp tác", cls: "danger" } }, item.status)}</td>
+        <td class="ad-td-actions">
+          ${item.status === "pending" ? `<button class="ad-btn ad-btn--sm ad-btn--gold" type="button" data-partner-action="approve" data-id="${item.id}">Duyệt</button>` : ""}
+          ${item.status === "active" ? `<button class="ad-btn ad-btn--sm ad-btn--danger" type="button" data-partner-action="lock" data-id="${item.id}">Ngừng</button>` : ""}
+        </td>
+      </tr>`,
+    ).join("");
+  }
+
+  function setupPartners() {
+    renderPartners();
+    document
+      .getElementById("ad-partner-rows")
+      .addEventListener("click", (event) => {
+        const button = event.target.closest("[data-partner-action]");
+        if (!button) return;
+        const item = PARTNERS.find(
+          (entry) => entry.id === Number(button.dataset.id),
+        );
+        if (!item) return;
+        item.status =
+          button.dataset.partnerAction === "approve" ? "active" : "locked";
+        adToast(
+          button.dataset.partnerAction === "approve"
+            ? `Đã duyệt đối tác ${item.name}`
+            : `Đã ngừng hợp tác ${item.name}`,
+        );
+        renderPartners();
+      });
+  }
+
+  // ============================================================
+  // Shipper
+  // ============================================================
+  const SHIPPERS = [
+    {
+      id: 1,
+      name: "Trần Hoàng Nam",
+      email: "namtran@email.com",
+      phone: "0938 112 477",
+      license: "CCCD và bằng lái hợp lệ",
+      status: "pending",
+    },
+  ];
+
+  function renderShippers() {
+    const body = document.getElementById("ad-shipper-rows");
+    if (!body) return;
+    body.innerHTML = SHIPPERS.map(
+      (item) => `
+      <tr>
+        <td class="ad-td-main"><div class="ad-cell-main"><strong>${esc(item.name)}</strong><span>${esc(item.email)}</span></div></td>
+        <td data-label="Điện thoại">${esc(item.phone)}</td>
+        <td data-label="Giấy tờ">${esc(item.license)}</td>
+        <td data-label="Trạng thái">${badge({ pending: { label: "Chờ duyệt", cls: "warn" }, active: { label: "Đang hoạt động", cls: "ok" }, locked: { label: "Đã khóa", cls: "danger" } }, item.status)}</td>
+        <td class="ad-td-actions">
+          ${item.status === "pending" ? `<button class="ad-btn ad-btn--sm ad-btn--gold" type="button" data-shipper-action="approve" data-id="${item.id}">Duyệt</button>` : ""}
+          ${item.status === "active" ? `<button class="ad-btn ad-btn--sm ad-btn--danger" type="button" data-shipper-action="lock" data-id="${item.id}">Khóa</button>` : ""}
+        </td>
+      </tr>`,
+    ).join("");
+  }
+
+  function setupShippers() {
+    renderShippers();
+    document
+      .getElementById("ad-shipper-rows")
+      .addEventListener("click", (event) => {
+        const button = event.target.closest("[data-shipper-action]");
+        if (!button) return;
+        const item = SHIPPERS.find(
+          (entry) => entry.id === Number(button.dataset.id),
+        );
+        if (!item) return;
+        item.status =
+          button.dataset.shipperAction === "approve" ? "active" : "locked";
+        adToast(
+          button.dataset.shipperAction === "approve"
+            ? `Đã duyệt shipper ${item.name}`
+            : `Đã khóa shipper ${item.name}`,
+        );
+        renderShippers();
+      });
+  }
+
   function renderOrders() {
-    const list = ORDERS.filter((order) => orderFilter === "all" || order.status === orderFilter);
+    const list = ORDERS.filter(
+      (order) => orderFilter === "all" || order.status === orderFilter,
+    );
 
     document.getElementById("ad-order-chips").innerHTML = `
       <button class="ad-chip ${orderFilter === "all" ? "is-active" : ""}" type="button" data-order-filter="all">Tất cả <b>${ORDERS.length}</b></button>
-      ${Object.keys(ORDER_STATUS).map((key) => `
+      ${Object.keys(ORDER_STATUS)
+        .map(
+          (key) => `
         <button class="ad-chip ${orderFilter === key ? "is-active" : ""}" type="button" data-order-filter="${key}">
           ${ORDER_STATUS[key].label} <b>${ORDERS.filter((order) => order.status === key).length}</b>
-        </button>`).join("")}`;
+        </button>`,
+        )
+        .join("")}`;
 
     const body = document.getElementById("ad-order-rows");
     if (list.length === 0) {
@@ -420,12 +835,17 @@
       return;
     }
 
-    body.innerHTML = list.map((order) => {
-      const actions = ORDER_ACTIONS[order.status].map((item) => `
+    body.innerHTML = list
+      .map((order) => {
+        const actions = ORDER_ACTIONS[order.status]
+          .map(
+            (item) => `
         <button class="ad-btn ad-btn--sm ${item.danger ? "ad-btn--danger" : ""}" type="button"
-          data-order-action="${item.action}" data-code="${esc(order.code)}">${item.label}</button>`).join("");
+          data-order-action="${item.action}" data-code="${esc(order.code)}">${item.label}</button>`,
+          )
+          .join("");
 
-      return `
+        return `
         <tr data-code="${esc(order.code)}">
           <td class="ad-td-main"><div class="ad-cell-main"><strong>${esc(order.code)}</strong><span>${esc(order.time)} hôm nay</span></div></td>
           <td data-label="Khách hàng">${esc(order.customer)}</td>
@@ -434,7 +854,8 @@
           <td data-label="Trạng thái">${badge(ORDER_STATUS, order.status)}</td>
           <td class="ad-td-actions">${actions || '<span class="ad-panel__empty">—</span>'}</td>
         </tr>`;
-    }).join("");
+      })
+      .join("");
   }
 
   function setupOrders() {
@@ -455,7 +876,11 @@
       const order = ORDERS.find((item) => item.code === button.dataset.code);
       if (!order) return;
 
-      if (button.dataset.orderAction === "cancel" && !confirm(`Hủy đơn ${order.code}?`)) return;
+      if (
+        button.dataset.orderAction === "cancel" &&
+        !confirm(`Hủy đơn ${order.code}?`)
+      )
+        return;
 
       order.status = {
         ship: "shipping",
@@ -477,4 +902,8 @@
   if (page === "users") setupUsers();
   if (page === "products") setupProducts();
   if (page === "orders") setupOrders();
+  if (page === "promotions") setupPromotions();
+  if (page === "feedback") setupFeedback();
+  if (page === "partners") setupPartners();
+  if (page === "shippers") setupShippers();
 })();

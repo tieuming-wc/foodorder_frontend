@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Khuyến mãi · Admin Savoris</title>
+    <link rel="stylesheet" href="../css/admin.css" />
+    <script src="../js/config.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/admin/guard.js"></script>
+  </head>
+  <body class="ad-body" data-admin-page="promotions">
+    <div class="ad-app" id="ad-app">
+      <aside id="ad-sidebar"></aside>
+      <div class="ad-main">
+        <header id="ad-topbar"></header>
+        <main class="ad-content">
+          <div class="ad-page-head">
+            <h1 class="ad-title">Khuyến mãi</h1>
+            <p class="ad-sub">Tạo và quản lý ưu đãi dành cho khách hàng.</p>
+          </div>
+          <div class="ad-split">
+            <section class="ad-card">
+              <div class="ad-table-wrap">
+                <table class="ad-table">
+                  <thead>
+                    <tr>
+                      <th>Chương trình</th>
+                      <th>Giảm</th>
+                      <th>Thời gian</th>
+                      <th>Trạng thái</th>
+                      <th class="ad-t-right">Thao tác</th>
+                    </tr>
+                  </thead>
+                  <tbody id="ad-promotion-rows"></tbody>
+                </table>
+              </div>
+            </section>
+            <aside class="ad-panel">
+              <section class="ad-card">
+                <div class="ad-card__head">
+                  <h2 class="ad-card__title">Khuyến mãi mới</h2>
+                </div>
+                <form class="ad-form" id="ad-promotion-form">
+                  <div class="ad-field">
+                    <label class="ad-label" for="promotionName"
+                      >Tên chương trình</label
+                    ><input
+                      class="ad-input"
+                      id="promotionName"
+                      name="promotionName"
+                      required
+                    />
+                  </div>
+                  <div class="ad-field">
+                    <label class="ad-label" for="promotionDescription"
+                      >Mô tả</label
+                    ><textarea
+                      class="ad-textarea"
+                      id="promotionDescription"
+                      name="promotionDescription"
+                    ></textarea>
+                  </div>
+                  <div class="ad-field">
+                    <label class="ad-label" for="promotionDiscount"
+                      >Giảm (%)</label
+                    ><input
+                      class="ad-input"
+                      id="promotionDiscount"
+                      name="promotionDiscount"
+                      type="number"
+                      min="1"
+                      max="100"
+                      required
+                    />
+                  </div>
+                  <div class="ad-field">
+                    <label class="ad-label" for="promotionDays"
+                      >Ngày áp dụng</label
+                    ><input
+                      class="ad-input"
+                      id="promotionDays"
+                      name="promotionDays"
+                      placeholder="Tất cả các ngày"
+                    />
+                  </div>
+                  <div class="ad-field">
+                    <label class="ad-label" for="promotionStart">Bắt đầu</label
+                    ><input
+                      class="ad-input"
+                      id="promotionStart"
+                      name="promotionStart"
+                      type="date"
+                    />
+                  </div>
+                  <div class="ad-field">
+                    <label class="ad-label" for="promotionEnd">Kết thúc</label
+                    ><input
+                      class="ad-input"
+                      id="promotionEnd"
+                      name="promotionEnd"
+                      type="date"
+                    />
+                  </div>
+                  <div class="ad-form__actions">
+                    <button class="ad-btn ad-btn--gold" type="submit">
+                      Tạo khuyến mãi
+                    </button>
+                  </div>
+                </form>
+              </section>
+            </aside>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="../js/utils.js"></script>
+    <script src="../js/admin/layout.js"></script>
+    <script src="../js/admin/pages.js"></script>
+  </body>
+</html>
