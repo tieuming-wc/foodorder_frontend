@@ -1,66 +1,353 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Items | KS25 Base</title>
-  <link rel="icon" href="../assets/images/logo.svg">
-  <link rel="stylesheet" href="../css/style.css">
-</head>
-<body data-root="../">
-  <header id="app-header"></header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#101713" />
+    <title>Savoris — Khám phá thực đơn</title>
 
-  <main class="container layout-2col">
-    <!-- Form thêm / sửa -->
-    <section class="card">
-      <h2 id="form-title">Thêm item mới</h2>
-      <form id="item-form">
-        <label for="name">Tên *</label>
-        <input id="name" name="name" type="text" required maxlength="255" placeholder="VD: Cơm rang">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/items.css" />
+  </head>
 
-        <label for="price">Giá (VNĐ)</label>
-        <input id="price" name="price" type="number" min="0" step="1000" placeholder="0">
+  <body>
+    <main id="menuPage" class="page">
+      <header class="site-header">
+        <a class="brand" href="#" data-page="menu" aria-label="Savoris">
+          Savoris
+        </a>
 
-        <label for="description">Mô tả</label>
-        <textarea id="description" name="description" rows="3" placeholder="Không bắt buộc"></textarea>
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          aria-label="Mở menu"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
 
-        <div class="form-actions">
-          <button id="btn-submit" type="submit" class="btn btn-primary">Thêm</button>
-          <button id="btn-cancel" type="button" class="btn" hidden>Huỷ</button>
+        <nav class="main-nav" id="mainNav">
+          <a href="#menuGrid" data-page="menu">Khám phá</a>
+          <a href="#menuGrid" data-page="menu">Nhà hàng</a>
+          <a href="#cartPage" data-page="cart">Giỏ hàng</a>
+          <a href="#" data-page="detail">Về Savoris</a>
+        </nav>
+
+        <div class="header-actions">
+          <button class="cart-button" type="button" data-page="cart">
+            Giỏ hàng (<span id="menuCartCount">0</span>)
+          </button>
+          <button
+            class="button button-outline auth-button"
+            id="loginButton"
+            type="button"
+          >
+            Đăng nhập
+          </button>
         </div>
-      </form>
-    </section>
+      </header>
 
-    <!-- Danh sách -->
-    <section class="card">
-      <div class="list-header">
-        <h2>Danh sách items</h2>
-        <input id="search-input" type="search" placeholder="Tìm theo tên...">
+      <section class="menu-page-content">
+        <p class="eyebrow">KHAI PHÁ THỰC ĐƠN</p>
+        <h1>Hôm nay, bạn muốn ăn gì?</h1>
+
+        <form class="search-bar" id="searchForm">
+          <input
+            id="searchInput"
+            type="search"
+            placeholder="Tìm bít tết, mì Ý, cá hồi..."
+            autocomplete="off"
+            aria-label="Tìm kiếm món ăn"
+          />
+          <button class="button button-gold" type="submit">Tìm kiếm</button>
+        </form>
+
+        <div class="category-list" id="categoryList">
+          <button class="category active" type="button" data-category="Tất cả">
+            Tất cả
+          </button>
+          <button class="category" type="button" data-category="Món chính">
+            Món chính
+          </button>
+          <button class="category" type="button" data-category="Mì &amp; Pasta">
+            Mì &amp; Pasta
+          </button>
+          <button class="category" type="button" data-category="Hải sản">
+            Hải sản
+          </button>
+          <button class="category" type="button" data-category="Tráng miệng">
+            Tráng miệng
+          </button>
+          <button class="category" type="button" data-category="Đồ uống">
+            Đồ uống
+          </button>
+        </div>
+
+        <div class="filter-row">
+          <span id="dishCount">0 món ngon</span>
+          <div class="filter-actions">
+            <button id="sortButton" type="button">Giao nhanh <span>⌄</span></button>
+            <button id="filterButton" type="button">Khoảng giá: tất cả <span>⌄</span></button>
+            <button id="ratingButton" type="button">Đề xuất cho bạn <span>⌄</span></button>
+          </div>
+        </div>
+
+        <div class="menu-grid" id="menuGrid"></div>
+
+        <nav
+          class="pagination"
+          id="pagination"
+          aria-label="Phân trang món ăn"
+        ></nav>
+      </section>
+    </main>
+
+    <main id="detailPage" class="page inner-page" hidden>
+      <header class="site-header">
+        <a class="brand" href="#" data-page="menu" aria-label="Savoris">
+          Savoris
+        </a>
+
+        <nav class="main-nav">
+          <a href="#" data-page="menu">Khám phá</a>
+          <a href="#" data-page="menu">Nhà hàng</a>
+          <a href="#" data-page="cart">Ưu đãi</a>
+        </nav>
+
+        <div class="header-actions">
+          <button class="cart-button" type="button" data-page="cart">
+            Giỏ hàng (<span class="detailCartCount">0</span>)
+          </button>
+          <button class="button button-outline auth-button" type="button">
+            Đăng nhập
+          </button>
+        </div>
+      </header>
+
+      <div class="detail-content">
+        <nav class="breadcrumb" aria-label="Đường dẫn">
+          <a href="#" data-page="menu">Khám phá</a>
+          <span>/</span>
+          <a href="#" data-page="menu">Món chính</a>
+          <span>/</span>
+          <span>Bít tết bò Wagyu</span>
+        </nav>
+
+        <section class="detail-grid">
+          <img
+            class="detail-image"
+            src="https://images.unsplash.com/photo-1546039907-7fa05f864c02?auto=format&amp;fit=crop&amp;w=1200&amp;q=90"
+            alt="Bít tết bò Wagyu"
+          />
+
+          <div class="detail-info">
+            <p class="eyebrow">SAVORIS KITCHEN · MÓN ĐẶC TRƯNG</p>
+            <h1>Bít tết bò Wagyu</h1>
+
+            <div class="detail-meta">
+              <span>★ 4.9 (102 đánh giá)</span>
+              <span>25–35 phút</span>
+            </div>
+
+            <strong class="detail-price">1.250.000đ</strong>
+
+            <p class="detail-description">
+              Thăn bò Wagyu tẩm ướp, rau củ theo mùa và sốt<br />
+              tiêu đen. Chế biến ngay khi bạn gọi.
+            </p>
+
+            <div class="option-group">
+              <p>Độ chín mong muốn</p>
+
+              <label>
+                <input type="radio" name="doneness" value="Chín vừa" checked />
+                Chín vừa
+              </label>
+
+              <label>
+                <input type="radio" name="doneness" value="Chín kỹ" />
+                Chín kỹ
+              </label>
+            </div>
+
+            <div class="option-group notes">
+              <p>Ghi chú cho đầu bếp</p>
+              <input
+                id="dishNote"
+                type="text"
+                placeholder="Ví dụ: ít tiêu, sốt để riêng..."
+              />
+            </div>
+
+            <div class="detail-buy-row">
+              <div class="quantity-control">
+                <button
+                  type="button"
+                  id="decreaseQuantity"
+                  aria-label="Giảm số lượng"
+                >
+                  −
+                </button>
+                <span id="detailQuantity">1</span>
+                <button
+                  type="button"
+                  id="increaseQuantity"
+                  aria-label="Tăng số lượng"
+                >
+                  +
+                </button>
+              </div>
+
+              <button
+                class="button button-gold"
+                id="addDetailToCart"
+                type="button"
+              >
+                Thêm vào giỏ <span>→</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="reviews">
+          <h2>Được yêu thích vì từng chi tiết</h2>
+          <p>
+            Nguyên liệu tuyển chọn · Thịt bò Wagyu thật · Đóng gói giữ nhiệt
+          </p>
+
+          <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p>“Thịt mềm, sốt rất vừa vị. Giao đến vẫn còn nóng.”</p>
+            <small>Minh Anh · Đã mua hàng</small>
+          </div>
+        </section>
       </div>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Tên</th>
-              <th class="text-right">Giá</th>
-              <th>Ngày tạo</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody id="item-table-body"></tbody>
-        </table>
+    </main>
+
+    <main id="cartPage" class="page inner-page" hidden>
+      <header class="site-header">
+        <a class="brand" href="#" data-page="menu" aria-label="Savoris">
+          Savoris
+        </a>
+
+        <nav class="main-nav">
+          <a href="#" data-page="menu">Khám phá</a>
+          <a href="#" data-page="menu">Nhà hàng</a>
+          <a href="#" data-page="cart">Ưu đãi</a>
+          <a href="#" data-page="menu">Đơn hàng</a>
+        </nav>
+
+        <div class="header-actions">
+          <button class="cart-button" type="button" data-page="cart">
+            Giỏ hàng (<span class="cartCount">0</span>)
+          </button>
+          <button class="button button-outline auth-button" type="button">
+            Đăng nhập
+          </button>
+        </div>
+      </header>
+
+      <div class="cart-content">
+        <nav class="breadcrumb" aria-label="Đường dẫn">
+          <a href="#" data-page="menu">Khám phá</a>
+          <span>/</span>
+          <span>Giỏ hàng</span>
+        </nav>
+
+        <h1>Giỏ hàng của bạn</h1>
+
+        <section class="cart-layout">
+          <div class="cart-items">
+            <div id="cartItemsList"></div>
+
+            <div class="coupon-row">
+              <input
+                id="couponInput"
+                type="text"
+                placeholder="Nhập mã giảm giá"
+                aria-label="Mã giảm giá"
+              />
+              <button id="applyCoupon" type="button">Áp dụng</button>
+            </div>
+
+            <small class="coupon-status" id="couponStatus"></small>
+          </div>
+
+          <aside class="cart-summary">
+            <h2>Tóm tắt đơn hàng</h2>
+
+            <form id="checkoutForm" class="checkout-form">
+              <label>
+                Người nhận
+                <input id="recipientName" type="text" maxlength="150" required />
+              </label>
+              <label>
+                Số điện thoại
+                <input id="recipientPhone" type="tel" pattern="0[0-9]{9}" required />
+              </label>
+              <label>
+                Địa chỉ giao hàng
+                <input id="deliveryAddress" type="text" minlength="5" required />
+              </label>
+              <label>
+                Ghi chú
+                <input id="orderNote" type="text" maxlength="500" />
+              </label>
+              <label>
+                Thanh toán
+                <select id="paymentMethod">
+                  <option value="cod">Thanh toán khi nhận hàng</option>
+                  <option value="bank">Chuyển khoản ngân hàng</option>
+                </select>
+              </label>
+            </form>
+
+            <dl>
+              <div>
+                <dt>Tạm tính</dt>
+                <dd id="subtotal">0đ</dd>
+              </div>
+              <div>
+                <dt>Phí giao hàng</dt>
+                <dd id="shippingFee">0đ</dd>
+              </div>
+              <div>
+                <dt>Ưu đãi</dt>
+                <dd class="discount" id="discountAmount">−0đ</dd>
+              </div>
+              <div class="summary-total">
+                <dt>Tổng thanh toán</dt>
+                <dd id="cartTotal">0đ</dd>
+              </div>
+            </dl>
+
+            <button
+              class="button button-gold summary-button"
+              id="checkoutButton"
+              type="button"
+            >
+              Tiến hành thanh toán <span>→</span>
+            </button>
+          </aside>
+        </section>
+
+        <button class="back-button" type="button" data-page="menu">
+          ← Tiếp tục chọn món
+        </button>
       </div>
-    </section>
-  </main>
+    </main>
 
-  <footer id="app-footer"></footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/axios@1.7.9/dist/axios.min.js"></script>
-  <script src="../js/config.js"></script>
-  <script src="../js/api.js"></script>
-  <script src="../js/utils.js"></script>
-  <script src="../js/layout.js"></script>
-  <script src="../js/pages/items.js"></script>
-</body>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/pages/items.js"></script>
+  </body>
 </html>

@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Savoris — Tài khoản của tôi</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/account.css" />
+  </head>
+  <body>
+    <main class="account-page">
+      <header class="account-header">
+        <a class="brand" href="../index.html" aria-label="Savoris">Savoris</a>
+        <nav class="main-nav" aria-label="Điều hướng">
+          <a href="../index.html">Trang chủ</a>
+          <a href="./items.html">Thực đơn</a>
+        </nav>
+        <button class="button button-outline" id="headerLogout" type="button">
+          Đăng xuất
+        </button>
+      </header>
+
+      <div class="account-layout">
+        <aside class="account-sidebar">
+          <div class="account-avatar" id="accountAvatar">S</div>
+          <div>
+            <strong id="sidebarName">Tài khoản Savoris</strong>
+            <span id="sidebarEmail" class="muted">Đang tải...</span>
+          </div>
+
+          <nav class="account-menu" aria-label="Tài khoản">
+            <button type="button" class="active" data-account-section="profile">
+              Thông tin cá nhân
+            </button>
+            <button type="button" data-account-section="password">
+              Đổi mật khẩu
+            </button>
+            <button type="button" data-account-section="orders">
+              Lịch sử đặt hàng
+            </button>
+          </nav>
+        </aside>
+
+        <section class="account-content">
+          <div id="accountLoading" class="account-loading">
+            Đang tải thông tin tài khoản...
+          </div>
+
+          <div id="profileSection" hidden>
+            <div class="account-heading">
+              <p class="eyebrow">TÀI KHOẢN CỦA TÔI</p>
+              <h1>Thông tin cá nhân</h1>
+            </div>
+
+            <form id="profileForm" class="account-form">
+              <label>
+                Họ và tên
+                <input id="fullName" name="full_name" type="text" maxlength="150" required />
+              </label>
+              <label>
+                Email
+                <input id="email" name="email" type="email" maxlength="255" required />
+              </label>
+              <label>
+                Số điện thoại
+                <input id="phone" name="phone" type="tel" maxlength="30" />
+              </label>
+              <label>
+                Vai trò
+                <input id="role" type="text" readonly />
+              </label>
+              <button class="button button-gold" id="saveProfile" type="submit">
+                Lưu thay đổi
+              </button>
+            </form>
+          </div>
+
+          <div id="passwordSection" hidden>
+            <div class="account-heading">
+              <p class="eyebrow">BẢO MẬT</p>
+              <h1>Đổi mật khẩu</h1>
+            </div>
+
+            <form id="passwordForm" class="account-form">
+              <label>
+                Mật khẩu hiện tại
+                <input id="currentPassword" type="password" minlength="1" maxlength="128" required />
+              </label>
+              <label>
+                Mật khẩu mới
+                <input id="newPassword" type="password" minlength="8" maxlength="128" required />
+              </label>
+              <label>
+                Xác nhận mật khẩu mới
+                <input id="confirmPassword" type="password" minlength="8" maxlength="128" required />
+              </label>
+              <button class="button button-gold" id="savePassword" type="submit">
+                Cập nhật mật khẩu
+              </button>
+            </form>
+          </div>
+
+          <div id="ordersSection" hidden>
+            <div class="account-heading">
+              <p class="eyebrow">ĐƠN HÀNG CỦA BẠN</p>
+              <h1>Lịch sử đặt hàng</h1>
+            </div>
+            <div id="ordersList" class="orders-list"></div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <div class="logout-modal" id="logoutModal" hidden>
+      <div
+        class="logout-modal-box"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="logoutTitle"
+      >
+        <h2 id="logoutTitle">Bạn có chắc muốn đăng xuất?</h2>
+        <div class="logout-modal-actions">
+          <button type="button" id="cancelLogout">Ở lại</button>
+          <button type="button" id="confirmLogout">Đăng xuất</button>
+        </div>
+      </div>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/pages/account.js"></script>
+  </body>
+</html>
