@@ -93,9 +93,15 @@
         <div class="filter-row">
           <span id="dishCount">0 món ngon</span>
           <div class="filter-actions">
-            <button id="sortButton" type="button">Giao nhanh <span>⌄</span></button>
-            <button id="filterButton" type="button">Khoảng giá: tất cả <span>⌄</span></button>
-            <button id="ratingButton" type="button">Đề xuất cho bạn <span>⌄</span></button>
+            <button id="sortButton" type="button">
+              Giao nhanh <span>⌄</span>
+            </button>
+            <button id="filterButton" type="button">
+              Khoảng giá: tất cả <span>⌄</span>
+            </button>
+            <button id="ratingButton" type="button">
+              Đề xuất cho bạn <span>⌄</span>
+            </button>
           </div>
         </div>
 
@@ -286,15 +292,30 @@
             <form id="checkoutForm" class="checkout-form">
               <label>
                 Người nhận
-                <input id="recipientName" type="text" maxlength="150" required />
+                <input
+                  id="recipientName"
+                  type="text"
+                  maxlength="150"
+                  required
+                />
               </label>
               <label>
                 Số điện thoại
-                <input id="recipientPhone" type="tel" pattern="0[0-9]{9}" required />
+                <input
+                  id="recipientPhone"
+                  type="tel"
+                  pattern="0[0-9]{9}"
+                  required
+                />
               </label>
               <label>
                 Địa chỉ giao hàng
-                <input id="deliveryAddress" type="text" minlength="5" required />
+                <input
+                  id="deliveryAddress"
+                  type="text"
+                  minlength="5"
+                  required
+                />
               </label>
               <label>
                 Ghi chú
