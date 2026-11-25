@@ -26,13 +26,6 @@ const http = axios.create({
   headers: { "Content-Type": "application/json" },
 });
 
-// Muốn gửi token đăng nhập cho mọi request (khi nhóm làm chức năng login), bỏ comment đoạn dưới:
-// http.interceptors.request.use((config) => {
-//   const token = localStorage.getItem("token");
-//   if (token) config.headers.Authorization = `Bearer ${token}`;
-//   return config;
-// });
-
 // Lấy câu thông báo lỗi dễ đọc từ response của FastAPI
 function getErrorMessage(data, status) {
   if (data && typeof data.detail === "string") return data.detail;
@@ -53,8 +46,10 @@ http.interceptors.response.use(
       return Promise.reject(new ApiError(getErrorMessage(data, status), status, data));
     }
     // Không có response: server tắt, sai URL, bị chặn CORS, hoặc quá thời gian chờ
+    const baseURL = error.config?.baseURL || CONFIG.API_BASE_URL;
     return Promise.reject(new ApiError(
-      "Không kết nối được backend. Backend đã chạy chưa? Kiểm tra CONFIG.API_BASE_URL.", 0,
+      `Không kết nối được backend tại ${baseURL}. Hãy chạy FastAPI trên cổng 8000 và kiểm tra CORS.`,
+      0,
     ));
   },
 );
@@ -65,3 +60,10 @@ const api = {
   put: (path, body) => http.put(path, body).then((res) => res.data),
   delete: (path) => http.delete(path).then((res) => res.data),
 };
+http.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
