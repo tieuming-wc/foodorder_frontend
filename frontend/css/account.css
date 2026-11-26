@@ -13,11 +13,11 @@
 }
 
 .account-layout {
-  width: min(1180px, 92vw);
+  width: min(1180px, 90vw);
   display: grid;
-  grid-template-columns: 260px minmax(0, 1fr);
-  gap: 24px;
-  margin: 42px auto;
+  grid-template-columns: 270px minmax(0, 1fr);
+  gap: 32px;
+  margin: 64px auto 110px;
 }
 
 .account-sidebar,

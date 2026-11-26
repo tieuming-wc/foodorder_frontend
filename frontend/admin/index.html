@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0c0a">
+  <title>Tổng quan · Admin Savoris</title>
+  <link rel="icon" href="../assets/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/admin.css">
+  <!-- Admin Guard: chặn truy cập trước khi trang hiển thị -->
+  <script src="../js/config.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/admin/guard.js"></script>
+</head>
+<body class="ad-body" data-admin-page="dashboard">
+  <div class="ad-app" id="ad-app">
+    <aside id="ad-sidebar"></aside>
+
+    <div class="ad-main">
+      <header id="ad-topbar"></header>
+
+      <main class="ad-content">
+        <div class="ad-page-head">
+          <h1 class="ad-title">Tổng quan</h1>
+          <p class="ad-sub">Tình hình kinh doanh của Savoris Kitchen hôm nay.</p>
+        </div>
+
+        <section class="ad-stats" id="ad-stats" aria-label="Số liệu nhanh"></section>
+
+        <div class="ad-split">
+          <section class="ad-card" aria-labelledby="ad-recent-title">
+            <div class="ad-card__head">
+              <h2 class="ad-card__title" id="ad-recent-title">Đơn hàng gần đây</h2>
+              <a class="ad-link" href="orders.html">Xem tất cả</a>
+            </div>
+            <div class="ad-table-wrap">
+              <table class="ad-table">
+                <thead>
+                  <tr>
+                    <th>Mã đơn</th>
+                    <th>Khách hàng</th>
+                    <th class="ad-t-right">Tổng tiền</th>
+                    <th>Trạng thái</th>
+                  </tr>
+                </thead>
+                <tbody id="ad-recent-orders"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <aside class="ad-panel">
+            <section class="ad-card" aria-labelledby="ad-top-title">
+              <div class="ad-card__head">
+                <h2 class="ad-card__title" id="ad-top-title">Món bán chạy</h2>
+                <a class="ad-link" href="products.html">Quản lý</a>
+              </div>
+              <div class="ad-rank" id="ad-top-dishes"></div>
+            </section>
+          </aside>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/dishes-store.js"></script>
+  <script src="../js/admin/layout.js"></script>
+  <script src="../js/admin/pages.js"></script>
+</body>
+</html>

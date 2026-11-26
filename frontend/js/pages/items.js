@@ -309,6 +309,22 @@ function renderMenu() {
       const productImage = safeImageUrl(product.image);
       const categoryLabel = product.category || "Chưa phân loại";
 
+      let allergyWarn = "";
+      try {
+        const prof = JSON.parse(localStorage.getItem("savoris-taste-profile") || "{}");
+        const hay = `${product.name} ${product.description || ""} ${categoryLabel}`.toLowerCase();
+        const rules = {
+          "Hải sản": ["cá hồi", "tôm", "mực", "hải sản", "cua"],
+          "Đậu phộng": ["đậu phộng", "lạc"],
+          "Sữa & Phô mai": ["phô mai", "kem", "burrata", "mascarpone", "tiramisu", "bơ"],
+          "Gluten / Bột mì": ["mỳ", "mì", "pizza", "bánh mì", "tart"],
+        };
+        const hits = (prof.allergies || []).filter((a) => (rules[a] || []).some((kw) => hay.includes(kw)));
+        if (hits.length) {
+          allergyWarn = `<p style="margin:6px 0 0;font-size:10.5px;color:#e2726a;letter-spacing:.03em">⚠ Lưu ý dị ứng: ${escapeHtml(hits.join(", "))}</p>`;
+        }
+      } catch (_) {}
+
       const imageMarkup = productImage
         ? `<img
             src="${escapeHtml(productImage)}"
@@ -337,6 +353,7 @@ function renderMenu() {
           <p class="menu-card-meta">
             ${escapeHtml(product.description || "Chưa có mô tả")}
           </p>
+          ${allergyWarn}
 
           <div class="menu-card-bottom">
             <strong class="menu-card-price">${formatPrice(product.price)}</strong>
@@ -858,7 +875,11 @@ document.querySelector("#checkoutButton")?.addEventListener("click", () => {
   if (!form?.reportValidity()) return;
 
   const button = document.querySelector("#checkoutButton");
-  if (button) button.disabled = true;
+  const originalLabel = button ? button.innerHTML : "";
+  if (button) {
+    button.disabled = true;
+    button.innerHTML = 'Đang xử lý đơn…';
+  }
 
   api.post("/orders", {
     recipient_name: document.querySelector("#recipientName")?.value.trim(),
@@ -875,11 +896,14 @@ document.querySelector("#checkoutButton")?.addEventListener("click", () => {
     saveCart([]);
     activeCoupon = "";
     form.reset();
-    showToast(`Đặt hàng thành công. Mã đơn #${order.id}.`);
+    showToast(`Đặt hàng thành công. Mã đơn ${order.code || "#" + order.id}.`);
   }).catch((error) => {
     showToast(error.message || "Không thể tạo đơn hàng.");
   }).finally(() => {
-    if (button) button.disabled = false;
+    if (button) {
+      button.disabled = false;
+      button.innerHTML = originalLabel;
+    }
   });
 });
 
@@ -923,6 +947,22 @@ menuToggle?.addEventListener("click", () => {
   const isOpen = mainNav.classList.toggle("open");
   menuToggle.setAttribute("aria-expanded", String(isOpen));
 });
+
+// Tự động điền ghi chú bếp từ Hồ sơ vị giác (nếu có)
+(function applyTasteProfileToOrderNote() {
+  try {
+    const raw = localStorage.getItem("savoris-taste-profile");
+    if (!raw) return;
+    const p = JSON.parse(raw);
+    const parts = [];
+    if (Array.isArray(p.prefs) && p.prefs.length) parts.push(p.prefs.join(", "));
+    if (Array.isArray(p.allergies) && p.allergies.length) parts.push("Dị ứng: " + p.allergies.join(", "));
+    const noteInput = document.querySelector("#orderNote");
+    if (noteInput && !noteInput.value && parts.length) {
+      noteInput.value = parts.join(" · ");
+    }
+  } catch (_) {}
+})();
 
 refreshAuthState();
 renderCart();

@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0d0d0d" />
+    <title>Savoris — AI Sommelier &amp; Hồ sơ vị giác</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/luxury.css" />
+    <link rel="stylesheet" href="../css/sommelier.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="site-header">
+        <a class="brand" href="../index.html" aria-label="Savoris">
+          <span class="brand-mark">⌂</span>
+          Savoris
+        </a>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Mở menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav class="main-nav" id="mainNav">
+          <a href="../index.html">Trang chủ</a>
+          <a href="./items.html">Thực đơn</a>
+          <a href="./sommelier.html" class="is-active">Tư vấn vị giác</a>
+          <a href="./account.html">Tài khoản</a>
+          <a href="../admin/index.html">Quản trị</a>
+        </nav>
+
+        <div class="header-actions">
+          <a class="cart-button" href="./items.html#cartPage">
+            Giỏ hàng (<span id="somCartCount">0</span>)
+          </a>
+          <a class="button button-outline" href="./items.html">Chọn món</a>
+        </div>
+      </header>
+
+      <div class="som-wrap">
+        <!-- 1. Context-Aware Weather & Time Advisor -->
+        <section class="som-hero" data-reveal>
+          <div>
+            <p class="eyebrow">AI SOMMELIER · TƯ VẤN THEO NGỮ CẢNH</p>
+            <h1>Thực đơn thấu hiểu<br />khoảnh khắc của bạn.</h1>
+            <p class="muted" style="max-width:520px;margin:0 0 24px">
+              Hệ thống tự động đọc thời tiết tại khu vực của bạn, thời điểm trong ngày và hồ sơ vị giác để đề xuất những món ăn hài hòa nhất từ căn bếp Savoris.
+            </p>
+            <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center">
+              <button class="button button-gold" type="button" id="somLocateBtn">
+                Cập nhật thời tiết vị trí <span aria-hidden="true">→</span>
+              </button>
+              <a class="ghost-link" href="#somWheelSection">
+                Thử vòng quay vị giác <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+
+          <aside class="som-weather-card">
+            <p class="eyebrow" id="somWeatherLoc">ĐANG ĐỊNH VỊ KHU VỰC…</p>
+            <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:10px">
+              <span class="som-weather-temp" id="somWeatherTemp">--°C</span>
+              <span id="somWeatherDesc" style="color:var(--text);font-size:15px">Chạm nút để cấp quyền vị trí</span>
+            </div>
+            <p class="muted" id="somWeatherAdvice" style="margin:0;font-size:13px">
+              Đang tải dữ liệu thực đơn từ hệ thống…
+            </p>
+          </aside>
+        </section>
+
+        <!-- Weather & Time Recommended Dishes -->
+        <section class="som-section" data-reveal>
+          <div class="som-section-head">
+            <div>
+              <p class="eyebrow">01 / 04 · ĐỀ XUẤT THEO THỜI TIẾT &amp; THỜI ĐIỂM</p>
+              <h2 id="somContextTitle">Gợi ý dành riêng cho lúc này</h2>
+            </div>
+            <span class="muted" id="somTimeBadge" style="font-size:12px"></span>
+          </div>
+          <div class="ed-hint-bar">
+            <i aria-hidden="true"></i>
+            <span>Nghi thức chọn món: <strong>Nhấn giữ ảnh 1.5 giây</strong> hoặc <strong>nhấn đúp</strong> để đưa món vào khay thưởng thức.</span>
+          </div>
+          <div class="dish-grid" id="somWeatherDishes"></div>
+        </section>
+
+        <!-- 2. "Ăn gì hôm nay?" 3-Criteria Quick Filter -->
+        <section class="som-section" data-reveal>
+          <div class="som-section-head">
+            <div>
+              <p class="eyebrow">02 / 04 · BỘ LỌC TƯƠNG TÁC NHANH</p>
+              <h2>Hôm nay tâm trạng bạn thế nào?</h2>
+            </div>
+          </div>
+
+          <div class="som-filter-grid">
+            <div class="som-filter-group">
+              <p class="eyebrow" style="margin-bottom:4px">Tâm trạng</p>
+              <div class="som-pills" data-filter-group="mood">
+                <button class="som-pill is-active" type="button" data-val="alert">Cần tỉnh táo</button>
+                <button class="som-pill" type="button" data-val="tired">Đang mệt / Cần vỗ về</button>
+                <button class="som-pill" type="button" data-val="party">Tiệc tùng / Thưởng thức</button>
+              </div>
+            </div>
+
+            <div class="som-filter-group">
+              <p class="eyebrow" style="margin-bottom:4px">Thời gian ăn</p>
+              <div class="som-pills" data-filter-group="time">
+                <button class="som-pill is-active" type="button" data-val="quick">Nhanh gọn</button>
+                <button class="som-pill" type="button" data-val="leisure">Thong thả</button>
+                <button class="som-pill" type="button" data-val="late">Tối muộn thanh nhẹ</button>
+              </div>
+            </div>
+
+            <div class="som-filter-group">
+              <p class="eyebrow" style="margin-bottom:4px">Ngân sách / món</p>
+              <div class="som-pills" data-filter-group="budget">
+                <button class="som-pill is-active" type="button" data-val="all">Linh hoạt</button>
+                <button class="som-pill" type="button" data-val="low">Dưới 100.000đ</button>
+                <button class="som-pill" type="button" data-val="mid">100.000đ – 250.000đ</button>
+                <button class="som-pill" type="button" data-val="high">Từ 250.000đ</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="som-combo-grid" id="somComboResults"></div>
+        </section>
+
+        <!-- 3. Taste & Dietary Profile -->
+        <section class="som-section" data-reveal>
+          <div class="som-section-head">
+            <div>
+              <p class="eyebrow">03 / 04 · CÁ NHÂN HÓA</p>
+              <h2>Hồ sơ vị giác &amp; Kiểm soát dị ứng</h2>
+            </div>
+            <button class="button button-gold" type="button" id="somSaveProfileBtn">
+              Lưu hồ sơ vị giác <span aria-hidden="true">→</span>
+            </button>
+          </div>
+
+          <div class="som-profile-grid">
+            <div class="som-filter-group">
+              <p class="eyebrow" style="margin-bottom:4px">Cảnh báo dị ứng (tự động gắn nhãn trên Thực đơn)</p>
+              <div class="som-check-list" id="somAllergyList">
+                <label class="som-check"><input type="checkbox" value="Hải sản" /> Hải sản</label>
+                <label class="som-check"><input type="checkbox" value="Đậu phộng" /> Đậu phộng</label>
+                <label class="som-check"><input type="checkbox" value="Sữa & Phô mai" /> Sữa &amp; Phô mai</label>
+                <label class="som-check"><input type="checkbox" value="Gluten / Bột mì" /> Gluten / Bột mì</label>
+              </div>
+            </div>
+
+            <div class="som-filter-group">
+              <p class="eyebrow" style="margin-bottom:4px">Khẩu vị mặc định (tự điền vào ghi chú bếp)</p>
+              <div class="som-check-list" id="somPrefList">
+                <label class="som-check"><input type="checkbox" value="Ít ngọt" /> Ít ngọt</label>
+                <label class="som-check"><input type="checkbox" value="Không hành" /> Không hành</label>
+                <label class="som-check"><input type="checkbox" value="Ít dầu mỡ" /> Ít dầu mỡ</label>
+                <label class="som-check"><input type="checkbox" value="Cay nhẹ" /> Cay nhẹ</label>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. Luxury Lucky Wheel -->
+        <section class="som-section" id="somWheelSection" data-reveal>
+          <div class="som-section-head">
+            <div>
+              <p class="eyebrow">04 / 04 · KHOẢNH KHẮC NGẪU HỨNG</p>
+              <h2>Vòng quay chọn món Savoris</h2>
+            </div>
+            <label class="som-check" style="padding:7px 12px">
+              <input type="checkbox" id="somWheelSafeOnly" checked />
+              Loại trừ món có thành phần dị ứng của tôi
+            </label>
+          </div>
+
+          <div class="som-wheel-layout">
+            <div class="som-wheel-box">
+              <div class="som-wheel-pointer" aria-hidden="true"></div>
+              <canvas id="somWheelCanvas" width="380" height="380"></canvas>
+            </div>
+
+            <div class="som-wheel-result">
+              <p class="eyebrow">ĐỊNH MỆNH ẨM THỰC</p>
+              <h3 id="somWheelWinner" style="font-size:28px;margin:0 0 10px">Sẵn sàng để xoay?</h3>
+              <p class="muted" id="somWheelDesc" style="margin:0 0 22px">
+                Mỗi ô trên vòng quay được lấy trực tiếp từ các món đang phục vụ trong hệ thống Savoris.
+              </p>
+              <div style="display:flex;gap:12px;flex-wrap:wrap">
+                <button class="button button-gold" type="button" id="somSpinBtn">
+                  Quay chọn món <span aria-hidden="true">→</span>
+                </button>
+                <button class="button button-outline" type="button" id="somWheelAddBtn" hidden>
+                  Thêm món này vào giỏ
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/pages/sommelier.js"></script>
+    <script src="../js/luxury.js"></script>
+    <script src="../js/editorial-order.js"></script>
+  </body>
+</html>

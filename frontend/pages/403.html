@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0d0d0d" />
+  <title>403 · Không có quyền truy cập · Savoris</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/luxury.css" />
+</head>
+<body style="display:grid;place-items:center;min-height:100vh;padding:24px;text-align:center;">
+  <main style="max-width:460px;padding:40px 32px;background:var(--surface);border:1px solid var(--line);border-radius:6px;">
+    <p class="eyebrow">403 · TRUY CẬP BỊ TỪ CHỐI</p>
+    <h1 style="font-size:34px;margin:0 0 12px;">Khu vực quản trị</h1>
+    <p class="muted" id="reasonText" style="margin:0 0 28px;">Vui lòng đăng nhập bằng tài khoản Admin để tiếp tục.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a class="button button-gold" href="../index.html?auth=login">Đăng nhập Admin <span>→</span></a>
+      <a class="button button-outline" href="../index.html">Về trang chủ</a>
+    </div>
+  </main>
+  <script>
+    const reason = new URLSearchParams(location.search).get("reason");
+    const el = document.getElementById("reasonText");
+    if (reason === "forbidden") el.textContent = "Tài khoản hiện tại không có quyền quản trị viên (ADMIN).";
+    else if (reason === "expired") el.textContent = "Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.";
+  </script>
+</body>
+</html>

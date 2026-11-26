@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0c0a">
+  <title>Mã giảm giá · Admin Savoris</title>
+  <link rel="icon" href="../assets/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/admin.css">
+  <script src="../js/config.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/admin/guard.js"></script>
+</head>
+<body class="ad-body" data-admin-page="vouchers">
+  <div class="ad-app" id="ad-app">
+    <aside id="ad-sidebar"></aside>
+
+    <div class="ad-main">
+      <header id="ad-topbar"></header>
+
+      <main class="ad-content">
+        <div class="ad-page-head">
+          <h1 class="ad-title">Mã giảm giá</h1>
+          <p class="ad-sub">Tạo và quản lý voucher, mã khuyến mãi cho khách hàng.</p>
+        </div>
+
+        <div class="ad-split">
+          <!-- Left: list -->
+          <section class="ad-card" aria-label="Danh sách mã giảm giá">
+            <div class="ad-toolbar">
+              <div class="ad-search">
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="8.8" cy="8.8" r="5.3"/><path d="m13 13 4 4"/></svg>
+                <label class="ad-label" for="ad-voucher-search" style="position:absolute;left:-9999px">Tìm mã</label>
+                <input class="ad-input" id="ad-voucher-search" type="search" autocomplete="off" placeholder="Tìm mã voucher…">
+              </div>
+            </div>
+            <div class="ad-chips" id="ad-voucher-chips" style="margin-bottom:14px"></div>
+            <div class="ad-table-wrap">
+              <table class="ad-table">
+                <thead>
+                  <tr>
+                    <th>Mã voucher</th>
+                    <th>Loại</th>
+                    <th>Giảm giá</th>
+                    <th>Đã dùng</th>
+                    <th>Hết hạn</th>
+                    <th>Trạng thái</th>
+                    <th class="ad-t-right">Thao tác</th>
+                  </tr>
+                </thead>
+                <tbody id="ad-voucher-rows"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Right: form -->
+          <aside class="ad-panel">
+            <section class="ad-card" aria-labelledby="ad-voucher-form-title">
+              <div class="ad-card__head">
+                <h2 class="ad-card__title" id="ad-voucher-form-title">Tạo mã mới</h2>
+              </div>
+              <form class="ad-form" id="ad-voucher-form" novalidate>
+                <div class="ad-field">
+                  <label class="ad-label" for="ad-v-code">Mã voucher</label>
+                  <input class="ad-input" id="ad-v-code" name="vCode" type="text"
+                    placeholder="VD: WELCOME50" required maxlength="32"
+                    style="text-transform:uppercase;font-family:monospace;letter-spacing:.08em">
+                </div>
+                <div class="ad-grid-2">
+                  <div class="ad-field">
+                    <label class="ad-label" for="ad-v-type">Loại giảm</label>
+                    <select class="ad-select" id="ad-v-type" name="vType">
+                      <option value="percent">Phần trăm (%)</option>
+                      <option value="fixed">Số tiền (đ)</option>
+                    </select>
+                  </div>
+                  <div class="ad-field">
+                    <label class="ad-label" for="ad-v-discount">Mức giảm</label>
+                    <input class="ad-input" id="ad-v-discount" name="vDiscount" type="number" min="0" placeholder="0" required>
+                  </div>
+                </div>
+                <div class="ad-field">
+                  <label class="ad-label" for="ad-v-min">Đơn tối thiểu (đ)</label>
+                  <input class="ad-input" id="ad-v-min" name="vMin" type="number" min="0" step="10000" placeholder="0">
+                </div>
+                <div class="ad-grid-2">
+                  <div class="ad-field">
+                    <label class="ad-label" for="ad-v-maxuses">Số lần dùng tối đa</label>
+                    <input class="ad-input" id="ad-v-maxuses" name="vMaxUses" type="number" min="1" placeholder="100">
+                  </div>
+                  <div class="ad-field">
+                    <label class="ad-label" for="ad-v-expires">Hết hạn</label>
+                    <input class="ad-input" id="ad-v-expires" name="vExpires" type="date">
+                  </div>
+                </div>
+                <label class="ad-switch">
+                  <input type="checkbox" name="vActive" checked>
+                  <span class="ad-switch__track" aria-hidden="true"></span>
+                  Kích hoạt ngay
+                </label>
+                <div class="ad-form__actions">
+                  <button class="ad-btn ad-btn--gold" type="submit">Lưu mã</button>
+                </div>
+              </form>
+            </section>
+          </aside>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.7.9/dist/axios.min.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/admin/layout.js"></script>
+  <script src="../js/admin/pages.js"></script>
+</body>
+</html>

@@ -1,0 +1,262 @@
+/* ==========================================================
+   SAVORIS — AI Sommelier, Weather Pairing, Taste Profile & Lucky Wheel
+   ========================================================== */
+
+.som-wrap {
+  width: min(90vw, 1180px);
+  margin: 0 auto;
+  padding: 64px 0 120px;
+}
+
+.som-hero {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 48px;
+  align-items: center;
+  padding-bottom: 64px;
+  border-bottom: 1px solid var(--line);
+}
+
+.som-hero h1 {
+  margin: 0 0 16px;
+  font-size: clamp(34px, 4vw, 52px);
+  line-height: 1.15;
+}
+
+.som-weather-card {
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(145deg, #181714 0%, #11100e 100%);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.5s var(--ease-luxury), box-shadow 0.5s var(--ease-luxury);
+}
+
+.som-weather-card:hover {
+  border-color: rgba(197, 160, 89, 0.35);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.5), 0 0 28px rgba(197, 160, 89, 0.12);
+}
+
+.som-weather-temp {
+  font-family: var(--font-display);
+  font-size: 46px;
+  color: var(--gold);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.som-section {
+  padding: 72px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.som-section:last-child {
+  border-bottom: 0;
+}
+
+.som-section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+
+.som-section-head h2 {
+  margin: 0;
+  font-size: clamp(26px, 3vw, 34px);
+}
+
+/* 3-Criteria Interactive Filter */
+.som-filter-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.som-filter-group {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+
+.som-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.som-pill {
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 12.5px;
+  cursor: pointer;
+  transition: all 0.4s var(--ease-luxury);
+}
+
+.som-pill:hover {
+  color: var(--text);
+  border-color: var(--line-strong);
+}
+
+.som-pill.is-active {
+  background: rgba(197, 160, 89, 0.15);
+  border-color: var(--gold);
+  color: var(--gold-light);
+  box-shadow: 0 0 16px rgba(197, 160, 89, 0.18);
+}
+
+/* Combo Results */
+.som-combo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+}
+
+.som-combo-card {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  display: grid;
+  gap: 18px;
+  transition: transform 0.6s var(--ease-luxury), border-color 0.6s var(--ease-luxury), box-shadow 0.6s var(--ease-luxury);
+}
+
+.som-combo-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(197, 160, 89, 0.38);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.55), 0 0 28px rgba(197, 160, 89, 0.12);
+}
+
+.som-combo-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.som-mini-dish {
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--bg-elevated);
+}
+
+.som-mini-dish img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  display: block;
+}
+
+.som-mini-dish__body {
+  padding: 10px 12px;
+}
+
+.som-mini-dish__body h4 {
+  margin: 0 0 4px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 400;
+}
+
+/* Taste & Allergy Profile */
+.som-profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.som-check-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.som-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--surface);
+  font-size: 13px;
+  cursor: pointer;
+  transition: border-color 0.35s, background 0.35s;
+}
+
+.som-check input {
+  accent-color: var(--gold);
+}
+
+.som-check:has(input:checked) {
+  border-color: var(--gold);
+  background: rgba(197, 160, 89, 0.1);
+  color: var(--gold-light);
+}
+
+/* Lucky Wheel */
+.som-wheel-layout {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.som-wheel-box {
+  position: relative;
+  width: 380px;
+  max-width: 100%;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+}
+
+.som-wheel-pointer {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 22px solid var(--gold);
+  filter: drop-shadow(0 4px 10px rgba(197, 160, 89, 0.5));
+  z-index: 3;
+}
+
+#somWheelCanvas {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  border: 2px solid rgba(197, 160, 89, 0.45);
+  box-shadow: 0 0 40px rgba(197, 160, 89, 0.14);
+}
+
+.som-wheel-result {
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+
+@media (max-width: 900px) {
+  .som-hero,
+  .som-filter-grid,
+  .som-combo-grid,
+  .som-profile-grid,
+  .som-wheel-layout {
+    grid-template-columns: 1fr;
+  }
+}

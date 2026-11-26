@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0c0a">
+  <title>Thống kê · Admin Savoris</title>
+  <link rel="icon" href="../assets/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/admin.css">
+  <script src="../js/config.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/admin/guard.js"></script>
+</head>
+<body class="ad-body" data-admin-page="analytics">
+  <div class="ad-app" id="ad-app">
+    <aside id="ad-sidebar"></aside>
+
+    <div class="ad-main">
+      <header id="ad-topbar"></header>
+
+      <main class="ad-content">
+        <div class="ad-page-head">
+          <div class="ad-page-head__row">
+            <div>
+              <h1 class="ad-title">Thống kê</h1>
+              <p class="ad-sub">Phân tích doanh thu, đơn hàng và hành vi khách hàng.</p>
+            </div>
+            <div style="display:flex;gap:8px;align-items:center">
+              <select class="ad-select" id="ad-analytics-range" style="width:140px">
+                <option value="7">7 ngày qua</option>
+                <option value="30" selected>30 ngày qua</option>
+                <option value="90">3 tháng qua</option>
+              </select>
+              <button class="ad-btn" type="button" id="ad-export-analytics">
+                <svg width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10m0 0-3.5-3.5M10 13l3.5-3.5M4 16h12"/></svg>
+                Xuất CSV
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- KPI stats -->
+        <section class="ad-stats" id="ad-analytics-stats" aria-label="Chỉ số tổng quan"></section>
+
+        <!-- Revenue + Orders charts -->
+        <div class="ad-split" style="margin-bottom:18px">
+          <div>
+            <section class="ad-card" aria-label="Biểu đồ doanh thu">
+              <div class="ad-card__head">
+                <h2 class="ad-card__title">Doanh thu theo ngày</h2>
+              </div>
+              <div class="ad-chart-wrap"><canvas id="ad-analytics-revenue"></canvas></div>
+            </section>
+            <section class="ad-card" aria-label="Biểu đồ đơn hàng">
+              <div class="ad-card__head">
+                <h2 class="ad-card__title">Lượng đơn hàng</h2>
+              </div>
+              <div class="ad-chart-wrap" style="height:160px"><canvas id="ad-analytics-orders"></canvas></div>
+            </section>
+          </div>
+
+          <div>
+            <section class="ad-card" aria-label="Phân bổ danh mục">
+              <div class="ad-card__head">
+                <h2 class="ad-card__title">Danh mục bán chạy</h2>
+              </div>
+              <div class="ad-chart-wrap" style="height:220px"><canvas id="ad-analytics-cat"></canvas></div>
+            </section>
+            <section class="ad-card" aria-label="Giờ cao điểm">
+              <div class="ad-card__head">
+                <h2 class="ad-card__title">Giờ đặt hàng nhiều nhất</h2>
+              </div>
+              <div id="ad-peak-hours"></div>
+            </section>
+          </div>
+        </div>
+
+        <!-- Revenue table -->
+        <section class="ad-card" aria-label="Bảng doanh thu">
+          <div class="ad-card__head">
+            <h2 class="ad-card__title">Chi tiết theo ngày</h2>
+          </div>
+          <div class="ad-table-wrap">
+            <table class="ad-table">
+              <thead>
+                <tr>
+                  <th>Ngày</th>
+                  <th>Đơn hoàn tất</th>
+                  <th>Đơn hủy</th>
+                  <th class="ad-t-right">Doanh thu</th>
+                  <th class="ad-t-right">Trung bình / đơn</th>
+                </tr>
+              </thead>
+              <tbody id="ad-analytics-table"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.7.9/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/admin/layout.js"></script>
+  <script src="../js/admin/pages.js"></script>
+</body>
+</html>

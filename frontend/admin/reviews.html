@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0c0a">
+  <title>Phản hồi · Admin Savoris</title>
+  <link rel="icon" href="../assets/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/admin.css">
+  <script src="../js/config.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/admin/guard.js"></script>
+</head>
+<body class="ad-body" data-admin-page="reviews">
+  <div class="ad-app" id="ad-app">
+    <aside id="ad-sidebar"></aside>
+
+    <div class="ad-main">
+      <header id="ad-topbar"></header>
+
+      <main class="ad-content">
+        <div class="ad-page-head">
+          <h1 class="ad-title">Phản hồi khách hàng</h1>
+          <p class="ad-sub">Kiểm duyệt đánh giá và phản hồi từ khách hàng.</p>
+        </div>
+
+        <div class="ad-split">
+          <!-- Left: review list -->
+          <div>
+            <div class="ad-chips" id="ad-review-chips" style="margin-bottom:14px"></div>
+            <div id="ad-review-list"></div>
+          </div>
+
+          <!-- Right: rating summary -->
+          <aside class="ad-panel">
+            <section class="ad-card" aria-label="Thống kê đánh giá">
+              <div class="ad-card__head">
+                <h2 class="ad-card__title">Tổng quan đánh giá</h2>
+              </div>
+              <div id="ad-review-summary"></div>
+            </section>
+
+            <!-- Reply form (hidden by default) -->
+            <section class="ad-card" id="ad-reply-card" aria-label="Trả lời đánh giá" style="display:none">
+              <div class="ad-card__head">
+                <h2 class="ad-card__title">Trả lời đánh giá</h2>
+              </div>
+              <form class="ad-form" id="ad-reply-form" novalidate>
+                <div class="ad-field">
+                  <label class="ad-label" for="ad-reply-text">Nội dung phản hồi</label>
+                  <textarea class="ad-textarea" id="ad-reply-text" name="replyText"
+                    placeholder="Cảm ơn bạn đã đánh giá…" required maxlength="500"></textarea>
+                </div>
+                <div class="ad-form__actions">
+                  <button class="ad-btn ad-btn--gold" type="submit">Gửi phản hồi</button>
+                  <button class="ad-btn" type="button" id="ad-reply-cancel">Hủy</button>
+                </div>
+              </form>
+            </section>
+          </aside>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.7.9/dist/axios.min.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/admin/layout.js"></script>
+  <script src="../js/admin/pages.js"></script>
+</body>
+</html>

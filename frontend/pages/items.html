@@ -3,16 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#101713" />
+    <meta name="theme-color" content="#0d0d0d" />
     <title>Savoris — Khám phá thực đơn</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../css/items.css" />
+    <link rel="stylesheet" href="../css/luxury.css" />
   </head>
 
   <body>
@@ -34,10 +35,11 @@
         </button>
 
         <nav class="main-nav" id="mainNav">
-          <a href="#menuGrid" data-page="menu">Khám phá</a>
-          <a href="#menuGrid" data-page="menu">Nhà hàng</a>
+          <a href="../index.html">Trang chủ</a>
+          <a href="#menuGrid" data-page="menu" class="is-active">Thực đơn</a>
+          <a href="./sommelier.html">Tư vấn vị giác</a>
           <a href="#cartPage" data-page="cart">Giỏ hàng</a>
-          <a href="#" data-page="detail">Về Savoris</a>
+          <a href="./account.html">Tài khoản</a>
         </nav>
 
         <div class="header-actions">
@@ -73,6 +75,9 @@
           <button class="category active" type="button" data-category="Tất cả">
             Tất cả
           </button>
+          <button class="category" type="button" data-category="Món Việt">
+            Món Việt
+          </button>
           <button class="category" type="button" data-category="Món chính">
             Món chính
           </button>
@@ -103,6 +108,11 @@
               Đề xuất cho bạn <span>⌄</span>
             </button>
           </div>
+        </div>
+
+        <div class="ed-hint-bar">
+          <i aria-hidden="true"></i>
+          <span>Nghi thức chọn món: <strong>Nhấn giữ ảnh 1.5 giây</strong> hoặc <strong>nhấn đúp</strong> để đưa vào giỏ · Chạm nhẹ để xem chi tiết.</span>
         </div>
 
         <div class="menu-grid" id="menuGrid"></div>
@@ -370,5 +380,7 @@
     <script src="../js/config.js"></script>
     <script src="../js/api.js"></script>
     <script src="../js/pages/items.js"></script>
+    <script src="../js/luxury.js"></script>
+    <script src="../js/editorial-order.js"></script>
   </body>
 </html>

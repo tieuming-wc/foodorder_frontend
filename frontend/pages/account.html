@@ -3,9 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0d0d0d" />
     <title>Savoris — Tài khoản của tôi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/account.css" />
+    <link rel="stylesheet" href="../css/luxury.css" />
   </head>
   <body>
     <main class="account-page">
@@ -14,6 +22,9 @@
         <nav class="main-nav" aria-label="Điều hướng">
           <a href="../index.html">Trang chủ</a>
           <a href="./items.html">Thực đơn</a>
+          <a href="./sommelier.html">Tư vấn vị giác</a>
+          <a href="./items.html#cartPage">Giỏ hàng</a>
+          <a href="./account.html" class="is-active">Tài khoản</a>
         </nav>
         <button class="button button-outline" id="headerLogout" type="button">
           Đăng xuất
@@ -164,5 +175,6 @@
     <script src="../js/config.js"></script>
     <script src="../js/api.js"></script>
     <script src="../js/pages/account.js"></script>
+    <script src="../js/luxury.js"></script>
   </body>
 </html>

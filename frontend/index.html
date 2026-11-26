@@ -3,15 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#101713" />
+    <meta name="theme-color" content="#0d0d0d" />
     <title>Savoris — Tinh hoa ẩm thực</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/luxury.css" />
   </head>
   <body>
     <main id="homePage" class="page home-page">
@@ -31,10 +32,12 @@
         </button>
 
         <nav class="main-nav" id="mainNav">
-          <a href="./pages/items.html">Khám phá</a>
+          <a href="./index.html" class="is-active">Trang chủ</a>
           <a href="./pages/items.html">Thực đơn</a>
-          <a href="#offers">Ưu đãi</a>
-          <a href="#about">Về Savoris</a>
+          <a href="./pages/sommelier.html">Tư vấn vị giác</a>
+          <a href="#offers">Đặc quyền</a>
+          <a href="./pages/account.html">Tài khoản</a>
+          <a href="./admin/index.html">Quản trị</a>
         </nav>
 
         <div class="header-actions">
@@ -47,43 +50,96 @@
 
       <div class="home-content">
         <section class="hero" id="explore">
-          <div class="hero-copy">
-            <p class="eyebrow">TINH HOA ẨM THỰC · GIAO TẬN NƠI</p>
-            <h1>Một bữa ngon.<br />Vạn điều tận hưởng.</h1>
+          <div class="hero-copy" data-reveal>
+            <p class="eyebrow">01 / 04 · FINE DINING AT HOME</p>
+            <h1>Một bữa ngon.<br /><em class="hero-italic">Vạn điều tận hưởng.</em></h1>
             <p class="muted hero-description">
               Từ căn bếp đầy cảm hứng đến bàn ăn của bạn.<br />
               Khám phá hương vị được chăm chút trong từng chi tiết.
             </p>
-            <a class="button button-gold" href="./pages/items.html">
-              Khám phá thực đơn <span aria-hidden="true">→</span>
-            </a>
+            <div class="hero-actions">
+              <a class="button button-gold" href="./pages/items.html">
+                Trải nghiệm ngay <span aria-hidden="true">→</span>
+              </a>
+              <a class="ghost-link" href="./pages/sommelier.html">
+                AI Sommelier &amp; Vòng quay <span aria-hidden="true">→</span>
+              </a>
+            </div>
+            <div class="hero-metrics">
+              <div><strong>12+</strong><span>Tuyệt tác mỗi ngày</span></div>
+              <div><strong>25′</strong><span>Giao nóng giữ vị</span></div>
+              <div><strong>4.9★</strong><span>Đánh giá thực khách</span></div>
+            </div>
           </div>
 
-          <div class="hero-visual">
-            <img
-              class="hero-image"
-              src="https://images.unsplash.com/photo-1546039907-7fa05f864c02?auto=format&fit=crop&w=1200&q=85"
-              alt="Bò bít tết dùng kèm rau củ"
-            />
+          <div class="hero-visual" data-reveal>
+            <div class="hero-frame">
+              <span class="hero-badge">Chef's Selection · 2026</span>
+              <img
+                class="hero-image"
+                data-parallax
+                src="https://images.unsplash.com/photo-1546039907-7fa05f864c02?auto=format&fit=crop&w=1200&q=85"
+                alt="Bò bít tết dùng kèm rau củ"
+              />
+            </div>
             <div class="image-caption">
               <span>01 / 04</span>
-              <span>MÓN ĐƯỢC YÊU THÍCH</span>
+              <span>MÓN ĐƯỢC TUYỂN CHỌN</span>
             </div>
           </div>
         </section>
 
-        <section class="offer-banner" id="offers">
-          <p class="eyebrow">MỘT CHÚT ĐẶC QUYỀN</p>
-          <h2>Giảm 15% cho lần đầu thưởng thức</h2>
-          <p class="muted">Nhập WELCOME15 · Đơn từ 300.000đ</p>
+        <div class="lux-marquee" aria-hidden="true">
+          <div class="lux-marquee__track">
+            <span>NGUYÊN LIỆU TUYỂN CHỌN</span><span>·</span>
+            <span>BẾP TRƯỞNG CHẾ BIẾN TƯƠI MỖI NGÀY</span><span>·</span>
+            <span>AI SOMMELIER TƯ VẤN THEO THỜI TIẾT</span><span>·</span>
+            <span>ĐÓNG GÓI GIỮ NHIỆT CHUẨN FINE DINING</span><span>·</span>
+            <span>NGUYÊN LIỆU TUYỂN CHỌN</span><span>·</span>
+            <span>BẾP TRƯỞNG CHẾ BIẾN TƯƠI MỖI NGÀY</span><span>·</span>
+            <span>AI SOMMELIER TƯ VẤN THEO THỜI TIẾT</span><span>·</span>
+          </div>
+        </div>
+
+        <section class="editorial-quote" data-reveal>
+          <blockquote>
+            “Sự xa xỉ đích thực không nằm ở sự phô trương, mà ở khoảnh khắc tĩnh lặng khi hương vị nguyên bản chạm đến giác quan.”
+          </blockquote>
+          <cite>Savoris Kitchen · Hanoi &amp; Saigon</cite>
         </section>
 
-        <section class="menu-section" id="restaurants">
+        <section class="offer-banner" id="offers" data-reveal>
+          <div class="offer-banner__inner">
+            <div>
+              <p class="eyebrow">AI SOMMELIER · VÒNG QUAY VỊ GIÁC &amp; ĐẶC QUYỀN</p>
+              <h2>Không biết ăn gì hôm nay? Để Savoris gợi ý theo thời tiết &amp; tâm trạng</h2>
+              <p class="muted">Lưu hồ sơ dị ứng, ghép cặp đồ uống tự động và nhập <strong style="color:var(--gold);font-weight:500">WELCOME15</strong> cho đơn từ 300.000đ</p>
+            </div>
+            <div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
+              <a class="button button-gold" href="./pages/sommelier.html">
+                Mở AI Sommelier <span aria-hidden="true">→</span>
+              </a>
+              <a class="ghost-link" href="./pages/items.html">
+                Xem thực đơn <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section class="menu-section" id="restaurants" data-reveal>
           <div class="section-heading">
-            <h2>Được chọn để bạn mê</h2>
+            <div>
+              <p class="eyebrow">02 / 04 · TUYỂN TẬP ĐẶC TRƯNG</p>
+              <h2>Được chọn để bạn mê</h2>
+            </div>
             <p class="muted" id="favoriteSubtitle">
               Những món ngon làm nên dấu ấn Savoris.
             </p>
+          </div>
+
+          <div class="ed-hint-bar">
+            <i aria-hidden="true"></i>
+            <span>Nghi thức chọn món: <strong>Nhấn giữ ảnh 1.5 giây</strong> hoặc <strong>nhấn đúp</strong> để đưa món vào khay thưởng thức.</span>
           </div>
 
           <div class="dish-grid" id="favoriteDishes">
@@ -181,23 +237,26 @@
           </div>
         </section>
 
-        <section class="craft-section" id="about">
-          <img
-            src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=1100&q=85"
-            alt="Món mỳ được chế biến từ nguyên liệu tươi ngon"
-          />
+        <section class="craft-section" id="about" data-reveal>
+          <div class="craft-visual">
+            <img
+              data-parallax
+              src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=1100&q=85"
+              alt="Món mỳ được chế biến từ nguyên liệu tươi ngon"
+            />
+          </div>
           <div class="craft-copy">
-            <p class="eyebrow">KHÔNG CHỈ LÀ MỘT BỮA ĂN</p>
+            <p class="eyebrow">03 / 04 · TRIẾT LÝ CHẾ BIẾN</p>
             <h2>Chất lượng từ bếp.<br />Trọn vẹn đến tay.</h2>
             <p class="muted">
               Nguyên liệu tươi mỗi ngày. Đầu bếp tận tâm.<br />
               Giao hàng chỉn chu, giữ nguyên hương vị.
             </p>
             <ul class="quality-list">
-              <li>01&nbsp; Tuyển chọn kỹ</li>
-              <li>02&nbsp; Chế biến mới</li>
-              <li>03&nbsp; Đóng gói chuẩn</li>
-              <li>04&nbsp; Giao tận nơi</li>
+              <li><span>I.</span> Nguyên bản</li>
+              <li><span>II.</span> Tuyển chọn</li>
+              <li><span>III.</span> Tinh chế</li>
+              <li><span>IV.</span> Giao nhận</li>
             </ul>
           </div>
         </section>
@@ -297,13 +356,13 @@
             </div>
 
             <div class="form-field">
-              <label for="email">Email</label>
+              <label for="email">Email hoặc tên tài khoản</label>
               <input
                 id="email"
                 name="email"
-                type="email"
-                placeholder="ban@email.com"
-                autocomplete="email"
+                type="text"
+                placeholder="admin hoặc ban@email.com"
+                autocomplete="username"
                 required
               />
             </div>
@@ -380,7 +439,7 @@
 
           <p class="auth-switch" id="authSwitch">
             Chưa có tài khoản?
-            <button type="button" id="modeSwitch">Đăng ký ngay</button>
+            <button type="button" id="modeSwitch">Gia nhập thành viên</button>
           </p>
         </section>
       </div>
@@ -405,5 +464,7 @@
     <script src="./js/config.js"></script>
     <script src="./js/api.js"></script>
     <script src="./js/pages/home.js"></script>
+    <script src="./js/luxury.js"></script>
+    <script src="./js/editorial-order.js"></script>
   </body>
 </html>

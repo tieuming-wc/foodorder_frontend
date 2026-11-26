@@ -245,6 +245,9 @@ function saveAuthResponse(data) {
 
   localStorage.setItem(AUTH_TOKEN_KEY, token);
   currentUser = data.user ?? null;
+  if (currentUser) {
+    localStorage.setItem("user", JSON.stringify(currentUser));
+  }
 }
 
 async function completeAuthentication() {
@@ -275,6 +278,9 @@ async function completeAuthentication() {
       try {
         const me = await api.get("/auth/me");
         currentUser = me?.user ?? me;
+        if (currentUser) {
+          localStorage.setItem("user", JSON.stringify(currentUser));
+        }
       } catch (error) {
         console.warn("Không thể lấy thông tin user:", error);
       }
@@ -287,9 +293,12 @@ async function completeAuthentication() {
     const returnUrl = sessionStorage.getItem(RETURN_URL_KEY);
     sessionStorage.removeItem(RETURN_URL_KEY);
 
+    const isAdminUser = String(currentUser?.role || "").toUpperCase() === "ADMIN";
+    const targetUrl = isAdminUser ? "./admin/index.html" : (returnUrl || ITEMS_PAGE_URL);
+
     window.clearTimeout(redirectTimer);
     redirectTimer = window.setTimeout(() => {
-      window.location.assign(returnUrl || ITEMS_PAGE_URL);
+      window.location.assign(targetUrl);
     }, AUTH_REDIRECT_DELAY);
   } catch (error) {
     console.error("Authentication error:", error);

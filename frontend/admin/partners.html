@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0c0a">
+  <title>Đối tác & Shipper · Admin Savoris</title>
+  <link rel="icon" href="../assets/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/admin.css">
+  <script src="../js/config.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/admin/guard.js"></script>
+</head>
+<body class="ad-body" data-admin-page="partners">
+  <div class="ad-app" id="ad-app">
+    <aside id="ad-sidebar"></aside>
+
+    <div class="ad-main">
+      <header id="ad-topbar"></header>
+
+      <main class="ad-content">
+        <div class="ad-page-head">
+          <h1 class="ad-title">Đối tác & Shipper</h1>
+          <p class="ad-sub">Duyệt đơn vị vận chuyển và nhà cung cấp thực phẩm.</p>
+        </div>
+
+        <div class="ad-split">
+          <!-- Left: table with tabs -->
+          <div>
+            <div class="ad-tabs" id="ad-partner-tabs">
+              <button class="ad-tab-btn is-active" type="button" data-partner-tab="partners">Đối tác nhà hàng</button>
+              <button class="ad-tab-btn" type="button" data-partner-tab="shippers">Shipper</button>
+            </div>
+
+            <section class="ad-card" aria-label="Danh sách đối tác">
+              <div class="ad-toolbar">
+                <div class="ad-search">
+                  <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="8.8" cy="8.8" r="5.3"/><path d="m13 13 4 4"/></svg>
+                  <label class="ad-label" for="ad-partner-search" style="position:absolute;left:-9999px">Tìm đối tác</label>
+                  <input class="ad-input" id="ad-partner-search" type="search" autocomplete="off" placeholder="Tìm tên, SĐT, địa chỉ…">
+                </div>
+              </div>
+              <div class="ad-chips" id="ad-partner-chips" style="margin-bottom:14px"></div>
+              <div class="ad-table-wrap">
+                <table class="ad-table">
+                  <thead>
+                    <tr id="ad-partner-thead">
+                      <th>Tên đối tác</th>
+                      <th>Liên hệ</th>
+                      <th>Đơn thực hiện</th>
+                      <th>Đánh giá</th>
+                      <th>Trạng thái</th>
+                      <th class="ad-t-right">Thao tác</th>
+                    </tr>
+                  </thead>
+                  <tbody id="ad-partner-rows"></tbody>
+                </table>
+              </div>
+            </section>
+          </div>
+
+          <!-- Right: detail -->
+          <aside class="ad-panel">
+            <section class="ad-card" aria-labelledby="ad-partner-detail-title">
+              <div class="ad-card__head">
+                <h2 class="ad-card__title" id="ad-partner-detail-title">Hồ sơ</h2>
+              </div>
+              <div id="ad-partner-detail">
+                <p class="ad-panel__empty">Chọn một đối tác để xem hồ sơ.</p>
+              </div>
+            </section>
+          </aside>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.7.9/dist/axios.min.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/admin/layout.js"></script>
+  <script src="../js/admin/pages.js"></script>
+</body>
+</html>
